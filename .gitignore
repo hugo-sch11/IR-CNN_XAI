@@ -1,0 +1,4 @@
+# Ignore data folder (CIFAR-10, Imagenette, ...)
+venv/
+imagenette2/
+cifar-10-torchvision/
