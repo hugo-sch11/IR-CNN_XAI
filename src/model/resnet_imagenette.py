@@ -1,6 +1,6 @@
 from pathlib import Path
 import src.helper.helper as helper
-from torch import save, load, no_grad
+import torch
 from torch.nn import Linear, CrossEntropyLoss
 from torch.optim import Adam
 from torch.utils.data import DataLoader
@@ -103,7 +103,7 @@ def train_one_epoch(model, loader, criterion, optimizer, device) -> tuple[float,
     return running_loss / total, running_correct / total
 
 
-@no_grad()
+@torch.no_grad()
 def evaluate(model, loader, criterion, device) -> tuple[float, float]:
     model.eval()
     running_loss = 0.0
@@ -146,9 +146,9 @@ def train_model(config: Config) -> None:
 
         print(f"Epoch {epoch + 1}/{config.epochs}")
         print(f"Train loss: {train_loss:.4f} | Train acc: {train_acc:.4f}")
-        print(f"Val   loss: {val_loss:.4f} | Val   acc: {val_acc:.4f}")
+        print(f"Val loss: {val_loss:.4f} | Val acc: {val_acc:.4f}")
 
-    save({
+    torch.save({
         "model_state_dict": model.state_dict(),
         "optimizer_state_dict": optimizer.state_dict(),
     }, config.saved_pth_path)
@@ -158,7 +158,7 @@ def train_model(config: Config) -> None:
 
 def load_model_for_inference(saved_pth_path, num_classes, device) -> models.ResNet:
     model = create_model(num_classes=num_classes).to(device)
-    saved_model = load(saved_pth_path, map_location=device)
+    saved_model = torch.load(saved_pth_path, map_location=device)
     model.load_state_dict(saved_model["model_state_dict"])
     model.eval()
 

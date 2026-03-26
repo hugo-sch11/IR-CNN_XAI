@@ -1,7 +1,13 @@
 """
-Compute gradients along the straight path from baseline to input and integrate them.
-Each feature|s attribution = (input - baseline) x average gradient along the path.
-This avoids gradient saturation while preserving gradient-based invariance.
+https://arxiv.org/pdf/1703.01365
+Compare l'entrée à la baseline, intègre les gradients de la baseline à l'entrée.
+Donne un taux d'activation par entrée.
+Propriété : Sensibilité, Complétitude (Completeness)
+(point positif comparé au gradient de base)
++ évite la saturation des gradients = plus stable
++ contribution total au lieu d'une sensibilité local
+- choix baseline, couteux en calcul
+- assume un straight-line path (tout au long du gradient rester dans la même distribution de donnée, alors qu'en réalité dans le cnn, des images produites sont hors du répertoire de donnée), ce qui donne des attributions trompeuses ou instables (appuyé par un gradient d'un artifact = fmap)
 """
 from captum.attr import IntegratedGradients
 import torch
@@ -19,14 +25,14 @@ class Config:
     ...
 
 def normalize_heatmap(attr: Tensor) -> Tensor:
-    heat = attr[0].abs().sum(dim=0).detach().cpu()
-    return (heat - heat.min()) / (heat.max() - heat.min() + 1e-8)
+    heat = attr[0].clamp(min=0).sum(dim=0).detach().cpu()
+    return (heat - heat.min()) / (heat.max() - heat.min())
 
 def get_integrated_gradient_attribute(
         x: Tensor, nn_model: nn.Module, prediction: int, device: device
     ) -> Tensor:
     IntegratedGradient = IntegratedGradients(nn_model)
-    baseline: Tensor = torch.zeros_like(x).to(device) # baseline!!!
+    baseline: Tensor = torch.zeros_like(x).to(device)
     return IntegratedGradient.attribute(
         inputs=x, 
         baselines=baseline, 
@@ -86,7 +92,7 @@ def main() -> None:
     plt.imshow(heat1, cmap="inferno", alpha=0.45, interpolation="nearest")
     plt.axis("off")
     plt.title(f"Predicted={ds1.classes[y_pred]}")
-
+    
     plt.show()
 
     ## ResNet18, Imagenette
