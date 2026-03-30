@@ -1,9 +1,9 @@
 import torch
-import training.train_cifar10 as engine
-import src.data.a_cifar10 as ds
+import train_cifar10 as engine
+import a_cifar10 as ds
 from matplotlib.pyplot import imshow
 import torchvision
-import src.model.cnn_cifar10 as cnn
+import cnn_cifar10 as cnn
 
 
 def main() -> None:

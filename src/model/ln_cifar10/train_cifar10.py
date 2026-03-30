@@ -1,5 +1,5 @@
-import src.data.a_cifar10 as ds
-import src.model.cnn_cifar10 as cnn
+import a_cifar10 as ds
+import cnn_cifar10 as cnn
 
 import time
 import torch

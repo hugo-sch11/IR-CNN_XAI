@@ -1,7 +1,7 @@
 """helpers"""
 import torch
 import random
-import src.model.cnn_cifar10 as cnn1
+import src.model.ln_cifar10.cnn_cifar10 as cnn1
 import src.model.resnet_imagenette as RNI #ResNetImagenette
 # type hints
 from torch import device, Tensor, nn

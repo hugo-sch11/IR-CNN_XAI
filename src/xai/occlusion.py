@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 import src.helper.helper as helper
 import src.model.resnet_imagenette as RNI #ResNetImagenette
-from src.data.a_cifar10 import testset as c10vds
+#from src.data.a_cifar10 import testset as c10vds
 ###
 
 
@@ -20,6 +20,7 @@ class Config:
     ...
 
 def normalize_heatmap(attr: torch.Tensor) -> torch.Tensor:
+    """Return a the heat ratio"""
     heat = attr[0].clamp(min=0).sum(dim=0).detach().cpu()
     return (heat - heat.min()) / (heat.max() - heat.min())
 
@@ -42,7 +43,7 @@ def main() -> None:
     
     device = helper.get_device()
 
-    convnet1, resnet18 = helper.load_models_for_inference(RNI.Config.saved_pth_path, len(tds.classes), device)
+    _, resnet18 = helper.load_models_for_inference(RNI.Config.saved_pth_path, len(tds.classes), device)
 
     ### Get sample
     ## LeNet, CIFAR-10

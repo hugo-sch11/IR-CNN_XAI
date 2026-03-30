@@ -15,7 +15,7 @@ from torch import Tensor, device, nn # type hints
 import matplotlib.pyplot as plt
 
 import src.helper.helper as helper
-import src.data.a_cifar10 as ds1
+import src.model.ln_cifar10.a_cifar10 as ds1
 import src.model.resnet_imagenette as RNI #ResNetImagenette
 ###
 
