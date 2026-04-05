@@ -1,0 +1,82 @@
+\documentclass[12pt,a4paper]{article}
+
+% Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Math
+\usepackage{amsmath, amssymb}
+% Images
+\usepackage{graphicx}
+% Links
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+
+% Layout
+\usepackage[a4paper, margin=1in]{geometry}
+\setlength{\parindent}{0pt}
+
+\title{\bfseries Pense-bête : Integrated Gradient \\ (Gradient Intégré)}
+\author{SCHMITT Hugo}
+
+\begin{document}
+
+\maketitle
+
+Introduit par \textbf{Mukund Sundararajan}, \textbf{Ankur Taly}, \textbf{Qiqi Yan} le 13 juin 2017 dans l'article \href{https://arxiv.org/pdf/1703.01365}{``Axiomatic Attribution for Deep Network''}, propose deux axiomes fondamentaux que les méthodes d'attributions devraient satisfaire, ce qui n'est pas le cas de la plupart des méthodes. Ces axiomes sont mise en œuvre pour cette nouvelle méthode d'attribution dénommé \emph{Integrated Gradient}. Comme son nom l'indique, il s'agit d'une méthode d'attribution de la famille des gradients (gradient-based).
+
+\section*{Axiomes}
+Les deux axiomes principaux :\\\\
+\textbf{Sensibilité} : pour chaque entrée $x$ et baseline $x'$ qui diffèrent en une charactéristique et qui ont des prédictions différentes, alors la charactéristique qui diffèrent devraient se voir attribuer une attribution non-nulle.
+{(\small\textit{NB: Les gradients, les approches de rétro-propagation et de déconvolution ne respectent pas cet axiom de sensibilité.)}} De plus, si la fonction implementé par le réseau de neuronnes ne dépend pas mathématiquement d'une ou plusieurs variables, alors l'attribution à cette variable sera toujours zéro.\\
+
+\textbf{Invariance à l'implémentation} : Deux modèles sont \textit{fonctionnellement équivalent} si leurs sorties sont égales avec les mêmes entrées, malgré des implémentations différentes. Les méthodes d'attributions devraient satisfaire \textit{l'invariance à l'implémentation}, c'est-à-dire que pour deux modèles fonctionnellement équivalent, leurs attributions seront toujours identiques.\\
+
+\textbf{Complétude} : les attributions se complètent avec la différence entre la sortie du modèle avec l'entrée de base $x$ et de la sortie du modèle avec la baseline $x'$.\\
+
+\textbf{Linéarité} : ...\\
+
+\textbf{Préservation de la symétrie} : ...\\
+
+\clearpage
+
+\section*{Gradient Intégré}
+Formules :\\
+\small\textit{(toutes tirées de l'article)}
+\[
+\mathrm{IntegratedGradients}_i(x) = (x_i - x_i') \int_{0}^{1} \frac{\partial F\big(x' + \alpha (x - x')\big)}{\partial x_i} \, d\alpha
+\]
+Où,
+\begin{center}
+\begin{tabular}{c l}
+$x$      & : entrée \\
+$x'$     & : baseline (référence) \\
+$\alpha$ & : constante d'interpolation \\
+$F$      & : fonction du modèle \\
+$i$      & : dimension de l'entrée \\
+\end{tabular}
+\end{center}
+
+Qui se calcule informatiquement par une d'une somme de Riemman :
+\[
+\mathrm{IntegratedGradients}^{approx}_{i}(x) = (x_i - x'_i)\times\sum_{k=1}^{m} \frac{\partial F\big(x'+\frac{k}{m}\times(x-x')\big)}{\partial x_i}\times\frac{1}{m}
+\]
+Avec m le nombre de pas dans l'approximation de Riemann.\\
+
+On peut retenir une forme plus simple (applicable à la presque totalité des réseaux de neuronnes, \textit{voir Proposition 1 de l'article})
+\[
+\sum_{i=1}^{m}\mathrm{IntegratedGradients}_i(x) = F(x) - F(x')
+\]
+
+\textbf{Plus simplement}, on attribue à chaque variable une importance en intégrant sa contribution (via le gradient) le long du chemin reliant la baseline à l'entrée. On accumule alors son effet sur la variation de la prédiction sur ce chemin. On peut dire qu'on regarde le dénivelé total parcouru depuis la baseline, au lieu de regarder seulement la pente sous un point.\\
+
+Cela évite alors les problèmes de saturations du gradient (lorsqu'en faisant la gradient à un point on perd sa contribution car la fonction d'activation  l'a applatie), on gagne en stabilité. Dans le même temps, on obtient une contribution total (le long du chemin), au lieu d'une sensibilité locale.
+
+% Example image:
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{image.png}
+%     \caption{Caption}
+% \end{figure}
+
+
+\end{document}
