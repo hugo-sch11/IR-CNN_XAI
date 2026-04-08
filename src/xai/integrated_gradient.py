@@ -16,13 +16,13 @@ from torch import Tensor, device, nn # type hints
 import matplotlib.pyplot as plt
 
 import src.helper.helper as helper
-import src.model.ln_cifar10.a_cifar10 as ds1
+#import src.model.ln_cifar10.a_cifar10 as ds1
 import src.model.resnet_imagenette as RNI #ResNetImagenette
 ###
 
 
 class Config:
-    n_steps: int = 128
+    n_steps: int = 256
     ...
 
 def get_integrated_gradient_attribute(
@@ -38,19 +38,19 @@ def get_integrated_gradient_attribute(
         n_steps=Config.n_steps
     )
 
-def normalize_heatmap(attr: Tensor) -> Tensor:
-    heat = attr[0].sum(dim=0).detach().cpu()
-    heat = smooth_heatmap(heat)
-    #print(heat.min(), heat.max(), heat.mean())
-    return heat / (heat.abs().max() + 1e-8)
-
 def smooth_heatmap(heat: Tensor, sigma: float = 0.5) -> Tensor:
     smoothed = gaussian_filter(heat.numpy(), sigma=sigma)
     return torch.tensor(smoothed)
 
+def normalize_heatmap(attr: Tensor) -> tuple[Tensor,int,int]:
+    heat = attr[0].sum(dim=0).detach().cpu()
+    heat = smooth_heatmap(heat)
+    #print(heat.min(), heat.max(), heat.mean())
+    return heat / (heat.abs().max() + 1e-8), heat.min(), heat.max()
+
 
 def main() -> None:
-    tds, vds, tdl, vdl = RNI.create_datasets_dataloaders(RNI.Config)
+    tds, vds, _, _ = RNI.create_datasets_dataloaders(RNI.Config)
 
     device = helper.get_device()
 
@@ -66,19 +66,18 @@ def main() -> None:
     b_pred: int = helper.get_prediction(a, resnet18)
     #print(b_pred, b_true)
 
-
     ##### Integrated Gradients
     attr2: Tensor = get_integrated_gradient_attribute(a, resnet18, b_pred, device)
     #print(attr2.shape) #-> torch.Size([1, 3, 224, 224])
     #-> (N,C,H,W) -> (batch_size=image_processed_together, channels=color_channels, height, width)
 
-    img2: Tensor = RNI.unnormalize_imagenette(a[0].detach().cpu()).permute(1,2,0)
-
-    heat2 = normalize_heatmap(attr2)
-    #print(f"min {min2},  max {max2}")
-
     ### Visualization
     ## ResNet18, Imagenette
+    img2: Tensor = RNI.unnormalize_imagenette(a[0].detach().cpu()).permute(1,2,0)
+    heat2, min2, max2 = normalize_heatmap(attr2)
+    #print(f"min {min2},  max {max2}")
+    #print(img2.shape, heat2.shape) # debug
+
     plt.figure(figsize=(10,5), dpi=200)
 
     plt.subplot(1,2,1)
@@ -88,7 +87,7 @@ def main() -> None:
 
     plt.subplot(1,2,2)
     plt.imshow(img2)
-    plt.imshow(heat2, cmap="seismic", alpha=0.6, vmin=-1, vmax=1, interpolation="nearest")
+    plt.imshow(heat2, cmap="inferno", alpha=0.5, vmin=min2, vmax=max2, interpolation="nearest")
     #plt.colorbar()
     plt.axis("off")
     plt.title(f"predicted={RNI.Config.class_names[vds.classes[b_pred]]}")

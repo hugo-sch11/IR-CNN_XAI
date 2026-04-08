@@ -19,7 +19,7 @@ class Config:
     strides=(3, 8, 8)
     ...
 
-def normalize_heatmap(attr: torch.Tensor) -> torch.Tensor:
+def normalize_heatmap(attr: Tensor) -> Tensor:
     """Return a the heat ratio"""
     heat = attr[0].clamp(min=0).sum(dim=0).detach().cpu()
     return (heat - heat.min()) / (heat.max() - heat.min())
