@@ -69,7 +69,7 @@ On peut retenir une forme plus simple (applicable à la presque totalité des r�
 
 \textbf{Plus simplement}, on attribue à chaque entrée une importance en intégrant sa contribution (via le gradient) le long du chemin reliant la baseline à l'entrée. On accumule alors son effet sur la variation de la prédiction sur ce chemin. On peut dire qu'on regarde le dénivelé total parcouru depuis la baseline, au lieu de regarder seulement la pente sous un point.\\
 
-Ça évite alors les problèmes de saturations du gradient (lorsqu'en faisant le gradient à un point on perd sa contribution car la fonction d'activation l'a applatie), on gagne en stabilité. Dans le même temps, on obtient une contribution total (le long du chemin), au lieu d'une sensibilité locale.\\
+Ça évite, entre autre, les problèmes de saturations du gradient (lorsqu'en faisant le gradient à un point on perd sa contribution car la fonction d'activation l'a applatie), on gagne en stabilité. Dans le même temps, on obtient une contribution total (le long du chemin), au lieu d'une sensibilité locale.\\
 \textit{Rappel que le gradient mesure la sensibilité locale, et non l'importance.}
 
 % Example image:

@@ -7,17 +7,10 @@ import src.helper.helper as helper
 ###
 
 def get_guided_grad_cam_attribute(
-        x: Tensor, nn_model: nn.Module, last_layer: nn.Module, target: int
+        x: Tensor, nn_model: nn.Module, last_layer: nn.Module, prediction: int
     ) -> Tensor:
     guided_grad_cam = GuidedGradCam(nn_model, last_layer)
-    return guided_grad_cam.attribute(inputs=x, target=target)
-
-def get_last_conv_layer(nn_model: nn.Module) -> nn.Conv2d:
-    last_conv_layer = None
-    for module in nn_model.modules():
-        if isinstance(module, nn.Conv2d):
-            last_conv_layer = module
-    return last_conv_layer
+    return guided_grad_cam.attribute(inputs=x, target=prediction)
 
 def normalize_heatmap(attr: Tensor) -> Tensor:
     heat = attr[0].sum(dim=0).clamp(min=0).detach().cpu()
@@ -36,7 +29,7 @@ def main() -> None:
     b_pred: int = helper.get_prediction(a, resnet18)
 
     ### Get last convolutional layer
-    last_conv_layer: nn.Conv2d = get_last_conv_layer(resnet18)
+    last_conv_layer: nn.Conv2d = helper.get_last_conv_layer(resnet18)
 
     ##### Grad-Cam
     attr: Tensor = get_guided_grad_cam_attribute(a, resnet18, last_conv_layer, b_pred)

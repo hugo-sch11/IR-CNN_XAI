@@ -7,6 +7,7 @@ import src.model.resnet_imagenette as RNI #ResNetImagenette
 from torch import device, Tensor, nn
 from torchvision.models import ResNet
 from torchvision.datasets import VisionDataset
+from scipy.ndimage import gaussian_filter
 
 
 def get_device() -> device:
@@ -38,5 +39,17 @@ def get_prediction(x: Tensor, nn_model: nn.Module) -> int:
     """Return the class index prediction of the model from the input."""
     logits: Tensor = nn_model(x)
     return logits.argmax(dim=1).item()
+
+def smooth_heatmap(heat: Tensor, sigma: float = 0.5) -> Tensor:
+    smoothed = gaussian_filter(heat.numpy(), sigma=sigma)
+    return torch.tensor(smoothed)
+
+def get_last_conv_layer(nn_model:nn.Module) -> nn.Conv2d:
+    last_conv_layer = None
+    for module in nn_model.modules():
+        if isinstance(module,nn.Conv2d):
+            last_conv_layer = module
+    return last_conv_layer
+
 
 # TODO: plot helper

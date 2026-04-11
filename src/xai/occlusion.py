@@ -3,13 +3,13 @@ https://arxiv.org/pdf/1311.2901
 Covers different parts of an input image with a square and observe how the class probability changes. 
 This shows whether the model is relying on the actual object or just on background context.
 """
-from captum.attr import Occlusion
-import torch
-from torch import Tensor, device, nn # type hints
-import matplotlib.pyplot as plt
-
 import src.helper.helper as helper
 import src.model.resnet_imagenette as RNI #ResNetImagenette
+from captum.attr import Occlusion
+import torch
+from scipy.ndimage import gaussian_filter
+import matplotlib.pyplot as plt
+from torch import Tensor, device, nn # type hints
 #from src.data.a_cifar10 import testset as c10vds
 ###
 
@@ -27,7 +27,8 @@ def normalize_heatmap(attr: Tensor) -> Tensor:
 def get_occlusion_attribute(
         x: Tensor, nn_model: nn.Module, prediction: int, device: device
     ) -> Tensor:
-    baseline = torch.zeros_like(x).to(device)
+    #baseline = torch.zeros_like(x).to(device)
+    baseline = torch.tensor(gaussian_filter(x.detach().cpu().numpy(), sigma=3)).to(device)
     occlusion = Occlusion(nn_model)
     return occlusion.attribute(
         inputs=x, 
