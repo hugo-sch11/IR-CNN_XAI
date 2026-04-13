@@ -8,7 +8,7 @@ from matplotlib import pyplot as plt
 import warnings
 ###
 
-# GuidedGradCam
+# GuidedGradCam warnings
 warnings.filterwarnings(
     "ignore",
     message="Setting backward hooks on ReLU activations"

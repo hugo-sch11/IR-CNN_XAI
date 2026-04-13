@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper]{article}
+
+% Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Math
+\usepackage{amsmath, amssymb}
+% Images
+\usepackage{graphicx}
+% Links
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+
+% Layout
+\usepackage[a4paper, margin=1in]{geometry}
+\setlength{\parindent}{0pt}
+
+\title{\bfseries État de l'art \\ Explicabilité des CNN}
+\author{SCHMITT Hugo}
+
+\begin{document}
+
+\maketitle
+
+\section*{Contexte général : l'explicabilité ? ...}
+Les CNNs, et NNs en général sont des boîtes noires...\\
+Problèmes : confiance, robustesse, ... $\to$ champ de recherche : XAI
+
+
+\section*{Taxonomie des méthodes d'explicabilité}
+
+\subsection*{Méthodes par perturbation (indépendante du modèle)}
+Comme exemple : l'Occlusion.\\
+Principe : masquer une partie de l'entrée et observer la variation de sortie.\\
+Intuition : importance d'une zone (selon taille du patch) = impact sur la prédiction.\\
+Avantages : simple (compréhensible), interprétable directement, ..\\
+Limites : coûteux (beaucoup de fp), dépend de la taille du patch.
+
+\subsection*{Méthodes basées sur les gradients}
+Comme exemple : Integrated Gradients.\\
+Principe : comme un gradient de base, importance pour une entrée selon sa dérivée partielle, mais amélioré en intégrant les gradients entre une baseline (valeur de réference) et l'entrée...\\
+Corrige donc les gradients bruités (reste bruyant), et la saturation des gradients.\\
+Avantages : propriétés théoriques (axiomes).\\
+Limites : dépend du choix de la baseline, parfois difficile à interpréter..
+
+\subsection*{Méthodes basées sur les activations (CAM-like)}
+Comme exemple : Grad-CAM.\\
+Principe : utilise les gradients et les cartes d'activations convolutionnelles, fait ressortir les régions les plus importantes de l'entrée.\\
+Avantages : très adapté aux CNNs, et donc interprétation visuelle intuitive.\\
+Limites : résolution grossière?, dépend de la couche choisie.
+
+
+\section*{Critères d'évaluation des méthodes}
+Une explication n'a pas de vérité absolue nette. Pas de métrique absolue, seulement des approches cherchant à régler ce problème.\\
+\textit{L'évaluation de l'explicabilité elle-même est un problème ouvert...}
+\subsection*{Critères empirique}
+Ces critères proviennent de l'expérimentation (d'où empirique), ne sont pas fondés.\\
+Fidélité(faithfulness) : est-ce que l'explication reflète vraiment le modèle ?\\
+Stabilité(robustness) : petites perturbations = mêmes explications ?\\
+Localisation : précision spatiale.\\
+Complexité computationnelle.
+
+\subsection*{Axiomes}
+Ils garantissent des propriétés mathématiques fondées (rigueur théorique), mais pas nécessairement une interprétation humaine pertinente.\\
+Sensitivity...\\
+Implementation Invariance...\\
+Completeness...
+
+
+\section*{Limites générales du domaine}
+
+\subsection*{Instabilité des méthodes}
+Deux méthodes =? deux explications différentes...
+
+\subsection*{Sensibilité aux hyperparamètres}
+baseline(IG),taille du patch(Occlusion),couche(Grad-CAM)
+
+\subsection*{Problème fondamental}
+Une explicabilité $\neq$ vérité du modèle.\\
+Risque de fausse interprétation.
+
+
+\section*{Tendances récentes}
+
+\subsection*{Combinaison de méthodes (multi-perspective)}
+
+\subsection*{Améliorations des méthodes existantes}
+
+\subsection*{Méthodes globales / conceptuelles}
+
+\end{document}
