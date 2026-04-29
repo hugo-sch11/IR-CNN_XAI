@@ -1,0 +1,29 @@
+### Introduction
+(--Contexte général, boîtes noires, enjeux de l'exp, obj de ce doc--)
+Les réseaux de neurones convolutifs (CNN) se sont imposés comme une référence pour les tâches de reconnaissance et d'analyse d'images. Grâce à leurs performances remarquables, ils sont aujourd'hui utilisés dans de nombreux domaines tels que la médecine, la sécurité, l'industrie ou encore les véhicules autonomes.
+Cependant, malgré leur efficacité, ces intelligences artificielles demeurent souvent difficiles à interpréter. Leurs fonctionnement interne, fondé sur l'apprentissage de millions de paramètres, les fait souvent paraître comme des "boîtes noires". Il devient alors difficile de comprendre sur quels élements un modèle s'appuie pour produire une prédiction.
+Cette absence de transparence soulève plusieurs enjeux majeurs. Elle peut limiter la confiance des utilisateurs, compliquer la détection d’erreurs ou de biais, et poser des problèmes éthiques ou réglementaires, en particulier dans des contextes sensibles. Par exemple, lorsqu’un modèle détecte un cancer sur une image médicale ou identifie un individu dans un système de surveillance, il est essentiel de pouvoir justifier la décision prise. (+Juridiquement...)
+Dans ce contexte, le domaine de l'Explainable Artificial Intelligence (XAI), ou intelligence artificielle explicable, vise à développer des méthodes permettant de mieux comprendre les décisions des modèles d'apprentissage profond.
+L'objectif de ce document est de présenter plusieurs familles d'approches d'explicabilité post-hoc appliquables aux réseaux de neurones convolutifs, notamment les méthodes par attribution (gradients), par perturbation et par analyse des activations internes. Ces méthodes seront illustrés visuellement, puis analysées et comparées afin d'évaluer leurs apports, leurs limites et leur pertinence...
+# Problématique
+Les CNN offrent d'excellentes performances, mais commenter interpréter leurs décisions ?
+Les méthodes d'explicabilité existantes fournissent-elles des explications fiables et comparables ?
+
+### Contexte et état de l'art
+(--Rappels sur CNN, définition explicabilité, panorama des approches existantes, +distinction int/exp--)
+Avant d'aborder les méthodes d'explicabilité en elles-mêmes, rappelons certaines notions importantes.
+Un réseau de neurones convolutifs (CNN) est un type de réseau de neurones artificiels acycliques particulièrement adapté au traitement de données structurées en grille, comme les images. Son principe repose sur l’apprentissage automatique de filtres (ou noyaux), qui sont des petites matrices de poids. Ces filtres sont appliqués à l’entrée (par exemple une image) à l’aide d’une opération de convolution. Concrètement, le filtre “glisse” sur l’entrée et calcule à chaque position un produit scalaire entre ses valeurs et celles de la région correspondante de l’entrée. Le résultat de cette opération est une carte de caractéristiques (feature map ou carte d’activation), qui met en évidence certaines structures de l’entrée (bords, textures, motifs, etc.). Un CNN est généralement composé de plusieurs types de couches; les couches de convolution : extraient des caractéristiques locales, les fonctions d’activation (comme ReLU) : introduisent de la non-linéarité, les couches de pooling : réduisent la dimension et rendent les représentations plus robustes, les couches entièrement connectées : utilisées en fin de réseau pour la prise de décision (classification, etc.) Au fur et à mesure des couches, le réseau apprend des caractéristiques de plus en plus abstraites, allant de motifs simples (bords) à des concepts complexes (objets entiers).
+L'explicabilité d'un modèle d'intelligence artificielle signifie : présenter à l'utilisateur le comportement du modèle facilement compréhensible, depuis la requête de l'utilisateur, en passant par les connaissances et les inférences de l'IA, jusqu'au comportement résultant. Tandis qu'un autre terme qui apparait souvent et s'en approche, l'interprétabilité qui signifie : la capacité d'expliquer ou de présenter à un humain des éléments dans des termes compréhensibles. La distinction entre ces deux termes est un débat controversial, donc souvent mis à égalité. [A Systematic Literature Review on Explainability for Machine/Deep Learning-based Software Engineering Research]
+En ce qui concerne le panorama des approches existantes, on peut les classer conceptuellement selon trois critères : la portée (local vs global), le niveau (a priori vs a posteriori) et la portabilité (spécifique ou agnostique au modèle). De plus, on peut les catégoriser par des familles de méthodes, comment elles produisent l'explication : méthodes par perturbation, méthodes par attributions et méthodes basées sur les activations. On peut projeter des familles sur des critères, les méthodes d'attributions sont souvent locales et a posteriori, les méthodes par perturbation sont généralement agnostiques et les méthodes basées sur les activations sont souvent spécifique au modèle. Cette liste n'est pas exhaustive, ils existent beaucoup d'autres familles de méthodes en explicabilité (activations_internes,intrinséquement_interprétables,substituts,basées_sur_des_exemples,contrefactuelles,décomposition,explications_par_règles,...).
+
+### Méthodes d'explicabilité
+(--attribution,perturbation,activation, leurs avantages et limites, ...--)
+
+### Expérimentation / Étude de cas
+(--architecture CNN / Dataset / méthodes XAI utilisé(s), et résultats visuels + analyse--)
+
+### Discussion
+(--Interprétation des résultats, limites des méthodes, cas fonctionnel ou non, fiabilité des explications--)
+
+### Conclusion et perspectives
+(--Résumé, réponse à la problématique, ouvertures, ...--)

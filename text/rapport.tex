@@ -1,0 +1,159 @@
+\documentclass{ir}
+
+\titre{Explicabilité des réseaux de neuronnes convolutifs.}
+
+\auteur{Hugo Schmitt\affil{1} et Antonin Leroy\affil{2}}
+
+\affiliation{
+    \affil{1}Université de Lorraine\\
+    UFR MIM\\
+    3 Rue Augustin Fresnel, 57070 Metz\\
+    hugo.schmitt3@univ-lorraine.fr\\
+    %
+    \affil{2}Université de Lorraine\\
+    UFR MIM\\
+    3 Rue Augustin Fresnel, 57070 Metz\\
+    antonin.leroy?@univ-lorraine.fr
+}
+
+\titrecourt{Explicabilité des réseaux de neuronnes convolutifs.}
+
+\nomcourt{H. Schmitt et A. Leroy}
+
+\encadrant{Alexandre Blansché}
+
+\resume{(150mots max ici)Ce document va traité des différentes méthodes d'explicabilité pour les réseaux de neuronnes convolutifs.}
+
+\motcle{Explicabilité réseaux de neuronnes convolutifs, Explicabilité CNN, XAI CNN}
+
+\begin{document}
+
+\section{Introduction}
+
+Ce document présente les instructions et recommandation pour rédiger l'article du projet d'introduction à la recherche.
+
+En particulier, ce document présente les consignes générales (section~\ref{sec:consignes}), puis détaille comment utiliser les figures, tableaux, etc. (section~\ref{sec:float}) et termine par expliquer comment introduire des références bibliographiques (section~\ref{sec:biblio}). 
+
+\section{Consignes générales}\label{sec:consignes}
+
+Les soumissions se feront par voie électronique par e-mail et en version papier, remis au secrétariat du département informatique ou à D. Michel. Elles devront être soumises au format \texttt{pdf} exclusivement et devront impérativement utiliser le format \LaTeX{} \texttt{ir}. Les soumissions qui dépasseraient 20 pages (hors annexes) ou qui ne respecteront pas le format \LaTeX{} ne seront pas évaluées. Les articles peuvent être soumis en français ou en anglais.
+
+% Les soumissions seront anonymes et se feront par voie électronique exclusivement à partir du site web de la conférence. Elles devront être soumises au format \texttt{pdf} exclusivement et devront impérativement utiliser le format \LaTeX{} \texttt{ir}. Les soumissions qui dépasseraient 20 pages (hors annexes) ou qui ne respecteront pas l’anonymat et/ou le format \LaTeX{} ne seront pas évaluées. Les articles peuvent être soumis en français ou en anglais.
+
+% On remplacera \texttt{$\backslash$documentclass\{ir\}} par \texttt{$\backslash$documentclass[soumission]\{ir\}} au début du fichier, afin de rendre la soumission anonyme.
+
+\subsection{Section de niveau 2}
+
+\subsubsection{Section de niveau 3}
+
+Le niveau de section le plus profond. Il vaut mieux éviter.
+
+\subsection{Liste d'éléments}
+
+Merci de respecter les styles suivants pour les listes.
+
+Exemple de liste sans numérotation :
+\begin{itemize}
+    \item premier item ;
+    \item deuxième item ;
+    \begin{itemize}
+      \item premier sous-item,
+      \item second sous-item,
+      \item dernier sous-item.
+  \end{itemize}
+  \item dernier item.
+\end{itemize}
+
+Autre liste possible avec numérotation :
+\begin{enumerate}
+    \item premier item ;
+    \item deuxième item ;
+    \begin{enumerate}
+      \item premier sous-item,
+      \item second sous-item,
+      \item dernier sous-item.
+    \end{enumerate}
+  \item dernier item.
+\end{enumerate}
+
+\subsection{Notes en bas de page}
+
+Les notes en bas de page\footnote{Première note en bas de page} s'utilisent de cette façon. En particulier pour citer une URL comme référence, il faut utiliser une note en bas de page, en indiquant la date de consultation du document en ligne\footnote{\url{https://www.latex-project.org/help/documentation/}, consulté le 30 mai 2018}.
+
+\subsection{Noms des auteurs et titre court dans l'entête}
+
+Pour les noms des auteurs utilisés dans l'entête de l'article, merci d'utiliser les initiales des prénoms. Seule la première lettre des noms doit être en capitale, le reste est en minuscules. De même, le titre court doit être en minuscules.
+
+\section{Figures, tableaux, etc.}\label{sec:float}
+
+Les tableaux et figures doivent être centrés horizontalement. Comme la figure~\ref{fig:nombre}, chaque figure doit être référencée dans le texte en utilisant les commandes \texttt{$\backslash$label\{identifiant\}} et \texttt{$\backslash$ref\{identifiant\}}. De même, les tables doivent aussi être référencées (cf. table~\ref{tab:nombre}). Les légendes doivent se terminer avec un point. Pour les tableaux, éviter de multiplier les lignes séparatrices de colonnes et de lignes, cela alourdi inutilement la page. N'oubliez pas, le cas échéant, d'indiquer la signification des axes sur vos graphiques.
+
+\begin{figure}
+\centering\epsfig{figure=figure.eps,width=.5\textwidth}
+\caption{Nombre d'étudiants inscrits en première année de master informatique à l'université de Lorraine.}
+\label{fig:nombre}
+\end{figure}
+
+\begin{table}
+\centering\begin{tabular}{cc}
+          Année universitaire & Nombre d'étudiants\\
+          \hline
+          2013-2014 & 69 \\
+          2014-2015 & 57 \\
+          2015-2016 & 71 \\
+          2016-2017 & 54 \\
+          2017-2018 & 55 \\
+          \hline
+          \end{tabular}
+\caption{Nombre d'étudiants inscrits en première année de master informatique à l'université de Lorraine.}
+\label{tab:nombre}
+\end{table}
+
+Les algorithmes peuvent être écrit avec le package \texttt{algorithm2e} et doivent également être référencés dans le texte (algorithme~\ref{alg:evo}).
+
+\begin{algorithme}[!htt]
+\caption{Algorithme évolutionnaire}
+\label{alg:evo}
+\begin{algorithm}[H]
+\Pour{$i\leftarrow 1$ à $p$}{$I^i\leftarrow Initialisation\left(\right)$\;}
+\Tq{la condition d'arrêt n'est pas vérifiée}
+{
+   \Pour{$i\leftarrow 1$ à $p$}{$fitness\left(I^i\right)\leftarrow f\left(I^i\right)$\;}
+   \Pour{$i\leftarrow 1$ à $p$}
+   {
+      $Parent_1\leftarrow S\acute{e}lection\left(P\right)$\;
+      $Parent_2\leftarrow S\acute{e}lection\left(P\right)$\;
+      $I^i\leftarrow Mutation\left(Croisement\left(Parent_1,Parent_2\right)\right)$\;
+   }
+}
+\end{algorithm}
+\end{algorithme}
+
+Le langage \LaTeX{} offre beaucoup de souplesse pour écrire des formules mathématiques telles que~: $ax^2+bx+c=0$. Il est également possible d'écrire des équations numérotées, comme l'équation~\ref{eq:solution}.
+
+\begin{equation}
+x_{1,2} = \frac{- b \pm \sqrt{\Delta}}{2a}\label{eq:solution}
+\end{equation}
+
+\section{Références bibliographiques et citation}\label{sec:biblio}
+
+Les références bibliographiques doivent être complètes afin de pouvoir retrouver facilement un document. Chaque référence doit être cité dans le texte.
+
+Le fichier \texttt{IR\_biblio.bib}, donné en exemple, contient trois références bibliographiques~: un livre \cite{goldberg89genetic}, un article de journal \cite{koza92genetic} et un article publié dans les actes d'une conférence \cite{macqueen65some}. Les informations fournies dans le fichier \texttt{bib} sont le strict minimum ! Il est possible de citer une référence plusieurs fois et de citer plusieurs référence en une seule commande \cite{goldberg89genetic,koza92genetic}.
+
+\section{Conclusion}
+
+Le document doit se terminer par une conclusion.
+
+\remerciement{Un court paragraphe peut-être utilisé à la fin pour les remerciements.}
+
+\bibliographystyle{apalike}
+\bibliography{IR_biblio}
+
+\appendix
+
+\section*{Annexe}
+
+Voici un exemple d'annexe. S'il y a plusieurs annexes, on utilisera la commande \texttt{$\backslash$section\{Nom de l'annexe\}}.
+
+\end{document}
