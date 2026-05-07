@@ -1,0 +1,37 @@
+\begin{thebibliography}{}
+
+\bibitem[Cao et~al., 2025]{cao25slre}
+Cao, S., Sun, X., Widyasari, R., Lo, D., Wu, X., Bo, L., Zhang, J., Li, B.,
+  Liu, W., Wu, D., and Chen, Y. (2025).
+\newblock A systematic literature review on explainability for machine/deep
+  learning-based software engineering research.
+
+\bibitem[Deng et~al., 2009]{deng09imagenet}
+Deng, J., Dong, W., Socher, R., Li, L.-J., Li, K., and Fei-Fei, L. (2009).
+\newblock Imagenet: A large-scale hierarchical image database.
+\newblock {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}, pages 248--255.
+
+\bibitem[He et~al., 2016]{DeepResidualLearningForImageRecognition}
+He, K., Zhang, X., Ren, S., and Sun, J. (2016).
+\newblock Deep residual learning for image recognition.
+\newblock {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}, pages 770--778.
+
+\bibitem[Krizhevsky, 2009]{krizhevsky09cifar10}
+Krizhevsky, A. (2009).
+\newblock Learning multiple layers of features from tiny images.
+\newblock {\em Technical Report, University of Toronto}.
+
+\bibitem[LeCun et~al., 1998]{lecun98lenet}
+LeCun, Y., Bottou, L., Bengio, Y., and Haffner, P. (1998).
+\newblock Gradient-based learning applied to document recognition.
+\newblock {\em Proceedings of the IEEE}, 86(11):2278--2324.
+
+\bibitem[M.~Sundararajan, 2017]{sundararajan17axiomatic_attribution}
+M.~Sundararajan, A.~Taly, Q.~Y. (2017).
+\newblock Axiomatic attribution for deep networks.
+\newblock {\em Proceedings of the 34th International Conference on Machine
+  Learning}.
+
+\end{thebibliography}

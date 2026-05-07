@@ -8,138 +8,168 @@
     \affil{1}Université de Lorraine\\
     UFR MIM\\
     3 Rue Augustin Fresnel, 57070 Metz\\
-    hugo.schmitt3@univ-lorraine.fr\\
+    hugo.schmitt3@etu.univ-lorraine.fr\\
     %
     \affil{2}Université de Lorraine\\
     UFR MIM\\
     3 Rue Augustin Fresnel, 57070 Metz\\
-    antonin.leroy?@univ-lorraine.fr
+    antonin.leroy9@etu.univ-lorraine.fr
 }
 
 \titrecourt{Explicabilité des réseaux de neuronnes convolutifs.}
 
 \nomcourt{H. Schmitt et A. Leroy}
 
-\encadrant{Alexandre Blansché}
+\encadrant{A. Blansché}
 
-\resume{(150mots max ici)Ce document va traité des différentes méthodes d'explicabilité pour les réseaux de neuronnes convolutifs.}
+\resume{Ce document va traité de l'explicabilité pour les réseaux de neuronnes convolutifs.}
 
 \motcle{Explicabilité réseaux de neuronnes convolutifs, Explicabilité CNN, XAI CNN}
 
 \begin{document}
 
-\section{Introduction}
+\clearpage
 
-Ce document présente les instructions et recommandation pour rédiger l'article du projet d'introduction à la recherche.
+\section{Introduction}\label{sec:intro}
 
-En particulier, ce document présente les consignes générales (section~\ref{sec:consignes}), puis détaille comment utiliser les figures, tableaux, etc. (section~\ref{sec:float}) et termine par expliquer comment introduire des références bibliographiques (section~\ref{sec:biblio}). 
+Les réseaux de neurones convolutifs (CNN) se sont imposés comme une référence pour les tâches de reconnaissance et d'analyse d'images.
 
-\section{Consignes générales}\label{sec:consignes}
+Grâce à leurs performances remarquables, ils sont aujourd'hui utilisés dans de nombreux domaines tels que la médecine, la sécurité, l'industrie ou encore les véhicules autonomes.
 
-Les soumissions se feront par voie électronique par e-mail et en version papier, remis au secrétariat du département informatique ou à D. Michel. Elles devront être soumises au format \texttt{pdf} exclusivement et devront impérativement utiliser le format \LaTeX{} \texttt{ir}. Les soumissions qui dépasseraient 20 pages (hors annexes) ou qui ne respecteront pas le format \LaTeX{} ne seront pas évaluées. Les articles peuvent être soumis en français ou en anglais.
+Cependant, malgré leur efficacité, ces intelligences artificielles demeurent souvent difficiles à interpréter.
+Leurs fonctionnement interne, fondé sur l'apprentissage de millions de paramètres, les fait souvent paraître comme des "boîtes noires".
 
-% Les soumissions seront anonymes et se feront par voie électronique exclusivement à partir du site web de la conférence. Elles devront être soumises au format \texttt{pdf} exclusivement et devront impérativement utiliser le format \LaTeX{} \texttt{ir}. Les soumissions qui dépasseraient 20 pages (hors annexes) ou qui ne respecteront pas l’anonymat et/ou le format \LaTeX{} ne seront pas évaluées. Les articles peuvent être soumis en français ou en anglais.
+Il devient alors difficile de comprendre sur quels élements un modèle s'appuie pour produire une prédiction.
+Cette absence de transparence soulève plusieurs enjeux majeurs.
+Elle peut limiter la confiance des utilisateurs, compliquer la détection d'erreurs ou de biais, et poser des problèmes éthiques ou réglementaires, en particulier dans des contextes sensibles.
 
-% On remplacera \texttt{$\backslash$documentclass\{ir\}} par \texttt{$\backslash$documentclass[soumission]\{ir\}} au début du fichier, afin de rendre la soumission anonyme.
+Par exemple, lorsqu'un modèle détecte un cancer sur une image médicale ou identifie un individu dans un système de surveillance, il est essentiel de pouvoir justifier la décision prise.
 
-\subsection{Section de niveau 2}
+Dans ce contexte, le domaine de l'Explainable Artificial Intelligence (XAI), ou intelligence artificielle explicable, vise à développer des méthodes permettant de mieux comprendre les décisions des modèles d'apprentissage profond.
 
-\subsubsection{Section de niveau 3}
+L'objectif de ce document est de présenter plusieurs familles d'approches d'explicabilité post-hoc appliquables aux réseaux de neurones convolutifs, notamment les méthodes par attribution (gradients), par perturbation et par analyse des activations internes. Ces méthodes seront illustrés visuellement, puis analysées et comparées afin d'évaluer leurs apports, leurs limites et leur pertinence. Et plus généralement, comment juger de la qualité d'une explication ?
 
-Le niveau de section le plus profond. Il vaut mieux éviter.
 
-\subsection{Liste d'éléments}
+\section{Contexte et état de l'art}\label{sec:contexte_sota}
 
-Merci de respecter les styles suivants pour les listes.
+\subsection{Rappel sur les CNN}\label{subsec:rappel}
 
-Exemple de liste sans numérotation :
+Avant d'aborder les méthodes d'explicabilité en elles-mêmes, rappelons certaines notions importantes concernant les réseaux de neurones convolutifs.
+
+Un réseau de neurones convolutifs (CNN) est un type de réseau de neurones artificiels acycliques particulièrement adapté au traitement de données structurées en grille, comme les images.
+
+Son principe repose sur l'apprentissage automatique de filtres (ou noyaux), qui sont des petites matrices de poids.
+Ces filtres sont appliqués à l'entrée (par exemple une image) à l'aide d'une opération de convolution.
+
+Concrètement, le filtre “glisse” sur l'entrée et calcule à chaque position un produit scalaire entre ses valeurs et celles de la région correspondante de l'entrée.
+Le résultat de cette opération est une carte de caractéristiques (feature map ou carte d'activation), qui met en évidence certaines structures de l'entrée (bords, textures, motifs, etc.).\\
+
+Un CNN est généralement composé de plusieurs types de couches :
 \begin{itemize}
-    \item premier item ;
-    \item deuxième item ;
-    \begin{itemize}
-      \item premier sous-item,
-      \item second sous-item,
-      \item dernier sous-item.
-  \end{itemize}
-  \item dernier item.
+    \item les couches de convolution : extraient des caractéristiques locales via les filtres
+    \item les fonctions d'activation (comme sigmoïde et ReLU) : introduisent de la non-linéarité pour bénéficier de la profondeur du réseau
+    \item les couches de pooling : réduisent la dimension et rendent les représentations plus robustes
+    \item les couches entièrement connectées : utilisées en fin de réseau pour la prise de décision (classification, etc.)
 \end{itemize}
+Au fur et à mesure des couches, le réseau apprend des caractéristiques de plus en plus abstraites, allant de motifs simples (bords,textures) à des concepts complexes (objets, parties d'objets).
 
-Autre liste possible avec numérotation :
-\begin{enumerate}
-    \item premier item ;
-    \item deuxième item ;
-    \begin{enumerate}
-      \item premier sous-item,
-      \item second sous-item,
-      \item dernier sous-item.
-    \end{enumerate}
-  \item dernier item.
-\end{enumerate}
 
-\subsection{Notes en bas de page}
+\subsection{L'explicabilité}
 
-Les notes en bas de page\footnote{Première note en bas de page} s'utilisent de cette façon. En particulier pour citer une URL comme référence, il faut utiliser une note en bas de page, en indiquant la date de consultation du document en ligne\footnote{\url{https://www.latex-project.org/help/documentation/}, consulté le 30 mai 2018}.
+L'explicabilité d'un modèle d'intelligence artificielle signifie : présenter à l'utilisateur le comportement du modèle facilement compréhensible, depuis la requête de l'utilisateur, en passant par les connaissances et les inférences de l'IA, jusqu'au comportement résultant.
 
-\subsection{Noms des auteurs et titre court dans l'entête}
+Tandis qu'un autre terme qui apparait souvent et s'en approche, l'interprétabilité, qui signifie : la capacité d'expliquer ou de présenter à un humain des éléments dans des termes compréhensibles.
 
-Pour les noms des auteurs utilisés dans l'entête de l'article, merci d'utiliser les initiales des prénoms. Seule la première lettre des noms doit être en capitale, le reste est en minuscules. De même, le titre court doit être en minuscules.
+La distinction entre ces deux termes constitue une problématique à part, ici nous ne ferons pas de distinction, comme dans cet article \cite{cao25slre}.
 
-\section{Figures, tableaux, etc.}\label{sec:float}
 
-Les tableaux et figures doivent être centrés horizontalement. Comme la figure~\ref{fig:nombre}, chaque figure doit être référencée dans le texte en utilisant les commandes \texttt{$\backslash$label\{identifiant\}} et \texttt{$\backslash$ref\{identifiant\}}. De même, les tables doivent aussi être référencées (cf. table~\ref{tab:nombre}). Les légendes doivent se terminer avec un point. Pour les tableaux, éviter de multiplier les lignes séparatrices de colonnes et de lignes, cela alourdi inutilement la page. N'oubliez pas, le cas échéant, d'indiquer la signification des axes sur vos graphiques.
+\subsection{Les métriques d'explicabilité}\label{subsec:metriques}
 
-\begin{figure}
-\centering\epsfig{figure=figure.eps,width=.5\textwidth}
-\caption{Nombre d'étudiants inscrits en première année de master informatique à l'université de Lorraine.}
-\label{fig:nombre}
-\end{figure}
+L'explicabilité des modèles d'apprentissage profond, et notamment des réseaux de neurones convolutifs (CNN), la qualité d'une explication est généralement étudiée selon deux approches complémentaires : une approche théorique fondée sur des axiomes, et une approche empirique basée sur des métriques d'évaluation.
 
-\begin{table}
-\centering\begin{tabular}{cc}
-          Année universitaire & Nombre d'étudiants\\
-          \hline
-          2013-2014 & 69 \\
-          2014-2015 & 57 \\
-          2015-2016 & 71 \\
-          2016-2017 & 54 \\
-          2017-2018 & 55 \\
-          \hline
-          \end{tabular}
-\caption{Nombre d'étudiants inscrits en première année de master informatique à l'université de Lorraine.}
-\label{tab:nombre}
-\end{table}
+Les travaux fondateurs comme \cite{sundararajan17axiomatic_attribution} ont introduit plusieurs propriétés mathématiques qu'une méthode d'explication devrait respecter, telles que la sensibilité (Sensitivity) ou l'invariance d'implémentation (Implementation Invariance). Ces axiomes visent à garantir la cohérence des méthodes d'attribution.
 
-Les algorithmes peuvent être écrit avec le package \texttt{algorithm2e} et doivent également être référencés dans le texte (algorithme~\ref{alg:evo}).
+Cependant, la recherche récente montre que le respect de ces propriétés ne suffit pas à garantir une explication réellement utile ou pertinente pour l'utilisateur.
 
-\begin{algorithme}[!htt]
-\caption{Algorithme évolutionnaire}
-\label{alg:evo}
-\begin{algorithm}[H]
-\Pour{$i\leftarrow 1$ à $p$}{$I^i\leftarrow Initialisation\left(\right)$\;}
-\Tq{la condition d'arrêt n'est pas vérifiée}
-{
-   \Pour{$i\leftarrow 1$ à $p$}{$fitness\left(I^i\right)\leftarrow f\left(I^i\right)$\;}
-   \Pour{$i\leftarrow 1$ à $p$}
-   {
-      $Parent_1\leftarrow S\acute{e}lection\left(P\right)$\;
-      $Parent_2\leftarrow S\acute{e}lection\left(P\right)$\;
-      $I^i\leftarrow Mutation\left(Croisement\left(Parent_1,Parent_2\right)\right)$\;
-   }
-}
-\end{algorithm}
-\end{algorithme}
+Ainsi, l'évaluation moderne de l'explicabilité repose également sur des métriques empiriques telles que la fidélité (faithfulness), la robustesse, la stabilité ou encore la simplicité des explications.
 
-Le langage \LaTeX{} offre beaucoup de souplesse pour écrire des formules mathématiques telles que~: $ax^2+bx+c=0$. Il est également possible d'écrire des équations numérotées, comme l'équation~\ref{eq:solution}.
+Dans le contexte actuel de l'intelligence artificielle, ces critères sont essentiels pour évaluer la pertinence des méthodes et mieux comprendre cette "boîte noire".
 
-\begin{equation}
-x_{1,2} = \frac{- b \pm \sqrt{\Delta}}{2a}\label{eq:solution}
-\end{equation}
+L'état de l'art tend aujourd'hui vers une vision plus globale de l'explicabilité, où une “bonne” explication doit être à la fois mathématiquement cohérente, fidèle au comportement du modèle et compréhensible pour l'humain.
 
-\section{Références bibliographiques et citation}\label{sec:biblio}
 
-Les références bibliographiques doivent être complètes afin de pouvoir retrouver facilement un document. Chaque référence doit être cité dans le texte.
+\subsection{Les approches existantes}\label{subsec:approches_existantes}
 
-Le fichier \texttt{IR\_biblio.bib}, donné en exemple, contient trois références bibliographiques~: un livre \cite{goldberg89genetic}, un article de journal \cite{koza92genetic} et un article publié dans les actes d'une conférence \cite{macqueen65some}. Les informations fournies dans le fichier \texttt{bib} sont le strict minimum ! Il est possible de citer une référence plusieurs fois et de citer plusieurs référence en une seule commande \cite{goldberg89genetic,koza92genetic}.
+En ce qui concerne le panorama des approches existantes, on peut les classer conceptuellement selon trois critères : la portée (local vs global), le niveau (a priori vs a posteriori) et la portabilité (spécifique ou agnostique au modèle).
+
+De plus, on peut les catégoriser par des familles de méthodes, comment elles produisent l'explication : méthodes par perturbation, méthodes par attributions et méthodes basées sur les activations.
+
+On peut projeter des familles sur des critères, les méthodes d'attributions sont souvent locales et a posteriori, les méthodes par perturbation sont généralement agnostiques et les méthodes basées sur les activations sont souvent spécifique au modèle. Cette liste n'est pas exhaustive mais présente "l'essentiel", il existe d'autres familles et sous-familles de méthodes d'explicabilité.
+
+
+\section{Méthodes d'explicabilité}
+
+Maintenant nous allons discuter des méthodes d'explicabilité traitées pour mieux les comprendre.
+
+Comme expliqué dans le dernier paragraphe (section~\ref{subsec:approches_existantes}), les méthodes abordées font parties de trois familles distinctes, attribution, perturbation et activation, chacune avec ses avantages et ses inconvenients.
+
+Premièrement, les méthodes d'attributions (ou attribution methods) visent à quantifier la contribution de chaque entrée (par exemple chaque pixel d'une image) à la prédiction du modèle. Elles essayent de répondre à la question : quelles parties de l'entrée ont le plus influencé la décision du CNN ? Elles reposent souvent sur le gradient de la sortie par rapport à l'entrée, et des variantes intégrées ou lissées...
+
+Deuxièmement, les méthodes de perturbations consistent à modifier volontairement certaines parties de l'entrée et observer l'impact sur la prédiction du modèle. L'idée est simple : si une modification d'uen zone change fortement la sortie, alors cette zone est importante. Ces perturbations peuvent prendre différentes formes comme le masquage de régions, l'ajout de bruit ou le remplacement par une valeur neutre...
+
+Dernièrement, les méthodes d'activations cherchent à exploiter les activations internes du réseau (feature maps) pour comprendre quelles régions de l'entrée activent certaines parties du modèle. Elles s'appuient sur le fait que les CNN apprennent des représentations hiérarchiques (\ref{subsec:rappel})...
+
+TODO : AJOUTER FORMULES GÉNÉRALES PAR GRANDS TYPES DE MÉTHODES
+
+
+\section{Expérimentation}
+
+\subsection{Technologies utilisées}
+
+Pour la mise en place de notre expérimentation, nous avons choisi d'utiliser le langage de programmation Python, largement reconnu comme une référence dans le domaine de l'apprentissage automatique.
+
+Nous nous appuyons plus précisément sur la bibliothèque PyTorch pour la phase d'apprentissage, ainsi que sur Captum (qui va de pair avec PyTorch) pour les aspects liés à l'explicabilité des modèles.
+
+Ces outils s'inscrivent dans un écosystème standard, au même titre que TensorFlow ou scikit-learn, couramment utilisés dans la littérature et l'industrie.
+
+
+\subsection{Architecture CNN et Dataset}
+% archi 1
+Concernant l'architecture du réseau de neurones convolutif (CNN), nous avons commencé par une architecture de type LeNet \cite{lecun98lenet}, l'architecture pionnière composée de sept couches.
+
+Ce choix s'explique par son statut de référence historique et sa simplicité, qui en font un modèle fréquemment utilisé dans les tutoriels.
+
+% dataset 1
+En parallèle, nous avons utilisé le jeu de données CIFAR-10 \cite{krizhevsky09cifar10}, constitué d'images de taille 32\times32 pixels réparties en dix classes distinctes, avec environ 6000 images par classe.
+
+Ce jeu de données est lui aussi un standard dans les travaux introductifs en vision par ordinateur, notamment pour l'évaluation de modèles légers.\\
+
+% limite 1
+Cependant, les premières expérimentations, en particulier les visualisations obtenues via des méthodes d'attribution, ont mis en évidence certaines limites.
+D'une part, la faible résolution des images (32\times32) ne permettait pas d'obtenir des cartes d'attribution suffisamment fines et interprétables.
+D'autre part, les performances du modèle restaient modestes, ce qui impactait également la pertinence des analyses explicatives.\\
+
+% archi 2
+Afin de remédier à ces limitations, nous avons opté pour une architecture plus profonde, à savoir ResNet-18, introduite dans \cite{DeepResidualLearningForImageRecognition}.
+Ce modèle, composé de dix-huit couches, repose sur le principe des connexions résiduelles, facilitant l'entraînement de réseaux de neuronnes profonds.
+
+% dataset 2
+En ce qui concerne les données, nous avons remplacé CIFAR-10 par Imagenette, un sous-ensemble du célèbre ImageNet \cite{deng09imagenet}.
+Imagenette propose des images de plus haute résolution et des classes visuellement plus riches (que CIFAR-10), ce qui le rend particulièrement adapté à l'étude de méthodes d'explicabilité.\\
+
+% concl
+Ce changement nous a permis d'obtenir des visualisations plus détaillées, qualitatives et pertinentes, tout en améliorant les performances globales du modèle, sans entraîner des temps de calcul excessifs lors de l'exécution de nos programmes.
+
+
+\subsection{Les méthodes mise en œuvre}
+
+Du côté des méthodes d'explicabilité choisis, nous avons choisis une méthode d'attribution (intégré), une méthode de perturbation, et une méthode d'activation.
+Nous allons en parler dans la section qui suit.
+DETAILLER CHAQUE MÉTHODE..
+
+
+\section{Discussion}
+
 
 \section{Conclusion}
 
