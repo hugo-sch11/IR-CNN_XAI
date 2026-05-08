@@ -6,4 +6,4 @@ imagenette (, cifar-10)
 
 ig,occlusion,grad-cam
 
-[![Illustration](text/thumbnail.png)]
+![Illustration](text/thumbnail.png)

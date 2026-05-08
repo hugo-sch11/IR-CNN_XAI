@@ -4,45 +4,45 @@ The top-level auxiliary file: rapport.aux
 The style file: apalike.bst
 Database file #1: IR_biblio.bib
 Warning--empty journal in cao25slre
-You've used 6 entries,
+You've used 9 entries,
             1935 wiz_defined-function locations,
-            504 strings with 4801 characters,
-and the built_in function-call counts, 2781 in all, are:
-= -- 262
-> -- 151
-< -- 4
-+ -- 56
-- -- 54
-* -- 233
-:= -- 487
-add.period$ -- 17
-call.type$ -- 6
-change.case$ -- 57
-chr.to.int$ -- 6
-cite$ -- 7
-duplicate$ -- 99
-empty$ -- 163
-format.name$ -- 60
-if$ -- 536
+            519 strings with 5341 characters,
+and the built_in function-call counts, 3977 in all, are:
+= -- 381
+> -- 195
+< -- 7
++ -- 70
+- -- 68
+* -- 317
+:= -- 685
+add.period$ -- 26
+call.type$ -- 9
+change.case$ -- 78
+chr.to.int$ -- 9
+cite$ -- 10
+duplicate$ -- 157
+empty$ -- 254
+format.name$ -- 80
+if$ -- 785
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 6
-newline$ -- 32
-num.names$ -- 18
-pop$ -- 55
+missing$ -- 9
+newline$ -- 47
+num.names$ -- 27
+pop$ -- 83
 preamble$ -- 1
-purify$ -- 57
+purify$ -- 78
 quote$ -- 0
-skip$ -- 87
+skip$ -- 129
 stack$ -- 0
-substring$ -- 169
-swap$ -- 23
-text.length$ -- 2
+substring$ -- 237
+swap$ -- 35
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 36
+type$ -- 54
 warning$ -- 1
-while$ -- 20
+while$ -- 29
 width$ -- 0
-write$ -- 75
+write$ -- 112
 (There was 1 warning)

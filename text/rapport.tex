@@ -73,7 +73,6 @@ Un CNN est généralement composé de plusieurs types de couches :
 \end{itemize}
 Au fur et à mesure des couches, le réseau apprend des caractéristiques de plus en plus abstraites, allant de motifs simples (bords,textures) à des concepts complexes (objets, parties d'objets).
 
-
 \subsection{L'explicabilité}
 
 L'explicabilité d'un modèle d'intelligence artificielle signifie : présenter à l'utilisateur le comportement du modèle facilement compréhensible, depuis la requête de l'utilisateur, en passant par les connaissances et les inférences de l'IA, jusqu'au comportement résultant.
@@ -81,7 +80,6 @@ L'explicabilité d'un modèle d'intelligence artificielle signifie : présenter 
 Tandis qu'un autre terme qui apparait souvent et s'en approche, l'interprétabilité, qui signifie : la capacité d'expliquer ou de présenter à un humain des éléments dans des termes compréhensibles.
 
 La distinction entre ces deux termes constitue une problématique à part, ici nous ne ferons pas de distinction, comme dans cet article \cite{cao25slre}.
-
 
 \subsection{Les métriques d'explicabilité}\label{subsec:metriques}
 
@@ -97,29 +95,178 @@ Dans le contexte actuel de l'intelligence artificielle, ces critères sont essen
 
 L'état de l'art tend aujourd'hui vers une vision plus globale de l'explicabilité, où une “bonne” explication doit être à la fois mathématiquement cohérente, fidèle au comportement du modèle et compréhensible pour l'humain.
 
-
 \subsection{Les approches existantes}\label{subsec:approches_existantes}
 
-En ce qui concerne le panorama des approches existantes, on peut les classer conceptuellement selon trois critères : la portée (local vs global), le niveau (a priori vs a posteriori) et la portabilité (spécifique ou agnostique au modèle).
+En ce qui concerne le panorama des approches existantes, on peut les classer conceptuellement selon trois critères : la portée (locale vs globale), le niveau (a priori vs a posteriori) et la portabilité (spécifique ou agnostique au modèle).
 
 De plus, on peut les catégoriser par des familles de méthodes, comment elles produisent l'explication : méthodes par perturbation, méthodes par attributions et méthodes basées sur les activations.
 
-On peut projeter des familles sur des critères, les méthodes d'attributions sont souvent locales et a posteriori, les méthodes par perturbation sont généralement agnostiques et les méthodes basées sur les activations sont souvent spécifique au modèle. Cette liste n'est pas exhaustive mais présente "l'essentiel", il existe d'autres familles et sous-familles de méthodes d'explicabilité.
+On peut projeter des familles sur des critères, les méthodes d'attributions sont souvent locales et a posteriori, les méthodes par perturbation sont généralement agnostiques et les méthodes basées sur les activations sont souvent spécifique au modèle.
+Cette liste n'est pas exhaustive mais présente "l'essentiel", il existe d'autres familles et sous-familles de méthodes d'explicabilité.
 
 
-\section{Méthodes d'explicabilité}
+\section{Les méthodes d'explicabilité}
 
 Maintenant nous allons discuter des méthodes d'explicabilité traitées pour mieux les comprendre.
 
 Comme expliqué dans le dernier paragraphe (section~\ref{subsec:approches_existantes}), les méthodes abordées font parties de trois familles distinctes, attribution, perturbation et activation, chacune avec ses avantages et ses inconvenients.
 
-Premièrement, les méthodes d'attributions (ou attribution methods) visent à quantifier la contribution de chaque entrée (par exemple chaque pixel d'une image) à la prédiction du modèle. Elles essayent de répondre à la question : quelles parties de l'entrée ont le plus influencé la décision du CNN ? Elles reposent souvent sur le gradient de la sortie par rapport à l'entrée, et des variantes intégrées ou lissées...
+\subsection*{Avant-propos}
 
-Deuxièmement, les méthodes de perturbations consistent à modifier volontairement certaines parties de l'entrée et observer l'impact sur la prédiction du modèle. L'idée est simple : si une modification d'uen zone change fortement la sortie, alors cette zone est importante. Ces perturbations peuvent prendre différentes formes comme le masquage de régions, l'ajout de bruit ou le remplacement par une valeur neutre...
+On a $f(x)$ la prédiction du modèle pour une image d'entrée $x$, avec :
 
-Dernièrement, les méthodes d'activations cherchent à exploiter les activations internes du réseau (feature maps) pour comprendre quelles régions de l'entrée activent certaines parties du modèle. Elles s'appuient sur le fait que les CNN apprennent des représentations hiérarchiques (\ref{subsec:rappel})...
+\begin{itemize}
+    \item $f$ : la fonction du modèle
+    \item $x$ : l'image en entrée, tel que $x$ \in $\mathbb{R}^{H \times W \times C}$
+\end{itemize}
 
-TODO : AJOUTER FORMULES GÉNÉRALES PAR GRANDS TYPES DE MÉTHODES
+où :
+
+\begin{itemize}
+    \item $H$ : longueur de l'image,
+    \item $W$ : largeur de l'image,
+    \item $C$ : nombre de canaux ($C$ = 3 pour une image RGB)
+\end{itemize}
+
+\subsection{Les méthodes d'attributions}
+
+Les méthodes d'attributions visent à quantifier la contribution de chaque entrée (par exemple chaque pixel d'une image) à la prédiction du modèle.
+
+Elles cherchent à répondre à la question suivante : quelles parties de l'entrée ont le plus influencé la décision du CNN ?
+
+Ces méthodes reposent généralement sur le gradient de la sortie du modèle par rapport à l'entrée, c'est-à-dire sur la sensibilité de la prédiction aux variations des pixels de l'image.\\
+
+Soit : $f(x)$ la prédiction du modèle pour une image d'entrée $x$.\\
+
+Le gradient de la sortie du modèle par rapport à l'entrée est défini par :
+
+\begin{equation}
+\nabla f(x) =
+\begin{bmatrix}
+\frac{\partial f(x)}{\partial x_1},
+\frac{\partial f(x)}{\partial x_2},
+\cdots,
+\frac{\partial f(x)}{\partial x_n}
+\end{bmatrix}
+=
+\frac{\partial f(x)}{\partial x}
+\end{equation}
+
+avec :
+\begin{itemize}
+    \item $x_i$ : le $i$-ème pixel de l'image,
+    \item $n = H \times W \times C$ : le nombre total de valeurs composant l'image.\\
+\end{itemize}
+
+Chaque dérivée partielle $\frac{\partial f(x)}{\partial x_i}$ mesure l'influence d'une variation locale du pixel $x_i$ sur la prédiction du modèle.
+
+Une valeur élevée du gradient indique qu'une faible modification du pixel considéré peut fortement affecter la sortie du réseau.\\
+\cite{simonyan2013saliency}
+
+\subsection{Les méthodes de perturbations}
+
+Les méthodes de perturbations consistent à modifier volontairement certaines parties de l'entrée afin d'observer l'impact sur la prédiction du modèle.
+
+L'idée est la suivante : si une modification locale de l'entrée entraîne une variation importante de la sortie, alors la région modifiée est considérée comme importante pour la décision du modèle.\\
+
+Ces perturbations peuvent prendre différentes formes :
+\begin{itemize}
+    \item le masquage de certaines régions de l'image,
+    \item l'ajout de bruit,
+    \item le remplacement de pixels par une valeur neutre.\\
+\end{itemize}
+
+Soit : $f(x)$ la prédiction du modèle pour une image d'entrée $x$.\\
+
+On définit une perturbation appliquée à l'entrée par :
+\begin{equation}
+\tilde{x} = P(x, m)
+\end{equation}
+
+avec :
+\begin{itemize}
+    \item $P$ : une fonction de perturbation,
+    \item $m$ : un masque ou une transformation appliquée à l'image,
+    \item $\tilde{x}$ : l'image perturbée.\\
+\end{itemize}
+
+L'importance d'une région peut alors être estimée en mesurant la variation de la prédiction :
+\begin{equation}
+\Delta f = f(x) - f(\tilde{x})
+\end{equation}
+
+où :
+\begin{itemize}
+    \item $f(x)$ : la prédiction sur l'image originale,
+    \item $f(\tilde{x})$ : la prédiction sur l'image perturbée.\\
+\end{itemize}
+
+Une valeur élevée de $\Delta f$ indique que la région perturbée contribue fortement à la prédiction du modèle.
+\cite{zeiler2014visualizing}
+
+\subsection{Les méthodes d'activations}
+
+Les méthodes d'activations exploitent les activations internes du réseau de neurones afin d'identifier les régions de l'entrée qui stimulent certaines parties du modèle.
+
+Elles reposent sur l'idée que les CNN apprennent progressivement des représentations hiérarchiques des données (\ref{subsec:rappel}) : les premières couches détectent des motifs simples (contours, textures), tandis que les couches profondes capturent des structures plus complexes et sémantiques.\\
+
+Soit une couche convolutionnelle $l$ prenant en entrée un tenseur $X^{(l)} \in \mathbb{R}^{H_l \times W_l \times C_l}$, où $C_l$ désigne le nombre de canaux d'entrée.\\
+
+Chaque filtre $k$ de cette couche produit une carte d'activation (ou canal de sortie) :
+
+\begin{equation}
+A_k^{(l)} \in \mathbb{R}^{H_l' \times W_l'}
+\end{equation}
+
+avec :
+\begin{itemize}
+    \item $H_l'$ : hauteur de la carte d'activation,
+    \item $W_l'$ : largeur de la carte d'activation,
+    \item $k$ : indice du filtre considéré (donc du canal de sortie associé).\\
+\end{itemize}
+
+On distingue ainsi :
+\begin{itemize}
+    \item les \textbf{canaux d'entrée} : composantes de $X^{(l)}$ (ex : RGB ou cartes d'activations de la couche précédente),
+    \item les \textbf{canaux de sortie} : les cartes d'activation $A_k^{(l)}$ produites par les filtres.\\
+\end{itemize}
+
+Chaque valeur de $A_k^{(l)}$ représente la réponse du filtre $k$ à une région locale de l'entrée.
+
+Des activations élevées indiquent que certaines caractéristiques présentes dans cette région sont fortement détectées par le réseau.\\
+
+Certaines méthodes, comme Grad-CAM, combinent les activations avec les gradients afin de produire une carte d'importance spatiale.
+
+Les poids associés à chaque carte d'activation sont calculés à partir du gradient de la sortie $f(x)$ par rapport aux activations :
+
+\begin{equation}
+\alpha_k^{(l)} =
+\frac{1}{H_l' W_l'}
+\sum_{i=1}^{H_l'}
+\sum_{j=1}^{W_l'}
+\frac{\partial f(x)}{\partial A_{k,i,j}^{(l)}}
+\end{equation}
+
+où :
+\begin{itemize}
+    \item $\alpha_k^{(l)}$ : importance du filtre $k$,
+    \item $A_{k,i,j}^{(l)}$ : activation à la position $(i,j)$ de la carte de sortie,
+    \item $f(x)$ : prédiction du modèle.\\
+\end{itemize}
+
+La carte d'activation pondérée est ensuite obtenue par :
+
+\begin{equation}
+L^{(l)} =
+\mathrm{ReLU}
+\left(
+\sum_k
+\alpha_k^{(l)} A_k^{(l)}
+\right)
+\end{equation}
+
+Une valeur élevée dans $L^{(l)}$ indique que la région correspondante de l'image contribue fortement à la prédiction du modèle.
+\cite{selvaraju2017grad}
 
 
 \section{Expérimentation}
@@ -157,18 +304,20 @@ Ce modèle, composé de dix-huit couches, repose sur le principe des connexions 
 En ce qui concerne les données, nous avons remplacé CIFAR-10 par Imagenette, un sous-ensemble du célèbre ImageNet \cite{deng09imagenet}.
 Imagenette propose des images de plus haute résolution et des classes visuellement plus riches (que CIFAR-10), ce qui le rend particulièrement adapté à l'étude de méthodes d'explicabilité.\\
 
-% concl
+% =>
 Ce changement nous a permis d'obtenir des visualisations plus détaillées, qualitatives et pertinentes, tout en améliorant les performances globales du modèle, sans entraîner des temps de calcul excessifs lors de l'exécution de nos programmes.
 
 
-\subsection{Les méthodes mise en œuvre}
+\subsection{Les méthodes mise en oeuvre}
 
 Du côté des méthodes d'explicabilité choisis, nous avons choisis une méthode d'attribution (intégré), une méthode de perturbation, et une méthode d'activation.
 Nous allons en parler dans la section qui suit.
-DETAILLER CHAQUE MÉTHODE..
+% TODO : DETAILLER CHAQUE MÉTHODE..
 
 
 \section{Discussion}
+
+% TODO
 
 
 \section{Conclusion}

@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023/Debian)  (format=lualatex 2026.5.7)  7 MAY 2026 16:54
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023/Debian)  (format=lualatex 2026.5.7)  8 MAY 2026 14:31
  restricted system commands enabled.
 **/home/hugo/Documents/uni/IR/implementation/text/rapport.tex
 (/home/hugo/Documents/uni/IR/implementation/text/rapport.tex
@@ -801,34 +801,103 @@ Missing character: There is no ” (U+201D) in font ptmr8t!
 Missing character: There is no “ (U+201C) in font ptmr8t!
 Missing character: There is no ” (U+201D) in font ptmr8t!
 ]
-Overfull \hbox (0.96774pt too wide) in paragraph at lines 122--123
-[]\T1/ptm/m/n/10 TODO : AJOU-TER FOR-MULES GÉ-NÉ-RALES PAR GRANDS TYPES DE M
-É-THODES 
+Overfull \hbox (3.12021pt too wide) in paragraph at lines 133--134
+[]\T1/ptm/m/n/10 Les mé-thodes d'at-tri-bu-tions visent à quan-ti-fier la cont
+ri-bu-tion de chaque en-trée (par exemple
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
+
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 145--146
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--151
+Underfull \hbox (badness 10000) in paragraph at lines 176--177
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 157--159
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
 
  []
 
-(./rapport.bbl [5
-Missing character: There is no œ (U+0153) in font ptmb8t!
-])
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 18
-7.
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--191
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 201--202
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 213--214
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 254--255
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 292--293
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--298
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 304--306
+
+ []
+
+[7] (./rapport.bbl)
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 33
+6.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-) [6] (./rapport.aux)
+)
+[8] (./rapport.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -836,26 +905,34 @@ L3 programming layer <2024-01-22>
 )
 
 Here is how much of LuaTeX's memory you used:
- 16355 strings out of 476553
+ 16365 strings out of 476553
  100000,1977958 words of node,token memory allocated
- 1315 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 43 glue, 4 kern, 1 penalty, 2 glyph, 175 attribute,
- 81 glue_spec, 27 attribute_list, 1 write nodes
-   avail lists: 2:1004,3:167,4:34,5:224,6:47,7:7399,8:4,9:210,10:12,11:685
- 37888 multiletter control sequences out of 65536+600000
- 79 fonts using 4888583 bytes
- 90i,11n,88p,558b,354s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 2716 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 122 glue, 4 kern, 1 penalty, 2 glyph, 546 attribute
+, 81 glue_spec, 80 attribute_list, 1 write nodes
+   avail lists: 2:1795,3:214,4:44,5:292,6:61,7:7320,8:43,9:456,10:12,11:685
+ 37896 multiletter control sequences out of 65536+600000
+ 81 fonts using 5049463 bytes
+ 90i,12n,88p,558b,354s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
-rw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8
-a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on rapport.pdf (6 pages, 89032 bytes).
+exmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on rapport.pdf (8 pages, 168570 bytes).
 
-PDF statistics: 52 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+PDF statistics: 94 PDF objects out of 1000 (max. 8388607)
+ 67 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 
