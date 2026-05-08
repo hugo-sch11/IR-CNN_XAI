@@ -1,16 +1,16 @@
 # Fdb version 4
-["bibtex rapport"] 1778242592.64219 "rapport.aux" "rapport.bbl" "rapport" 1778243483.84271 0
+["bibtex rapport"] 1778273974.10107 "rapport.aux" "rapport.bbl" "rapport" 1778274265.03725 0
   "./IR_biblio.bib" 1778242409.79348 2579 f9e808babdc1464a0a14f822804bec4f ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "rapport.aux" 1778243483.73952 2985 07d89e822a10a7eaacd52355c0273299 "lualatex"
+  "rapport.aux" 1778274264.93301 4031 a1ac93b12a8235d57b643ad5e6ba911a "lualatex"
   (generated)
   "rapport.bbl"
   "rapport.blg"
   (rewritten before read)
-["lualatex"] 1778243483.10284 "/home/hugo/Documents/uni/IR/implementation/text/rapport.tex" "rapport.pdf" "rapport" 1778243483.84284 0
+["lualatex"] 1778274264.28627 "/home/hugo/Documents/uni/IR/implementation/text/rapport.tex" "rapport.pdf" "rapport" 1778274265.03739 0
   "/home/hugo/.texlive2023/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-regular.luc" 1778158671.72945 127309 677951b359b90ddbfa3eb54f696122f6 ""
   "/home/hugo/.texlive2023/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz" 1778158671.67645 76896 927f7b5683e23af56409adf801551c87 ""
-  "/home/hugo/Documents/uni/IR/implementation/text/rapport.tex" 1778243483.02252 17519 303be48368c18881f3acd5b828a3233d ""
+  "/home/hugo/Documents/uni/IR/implementation/text/rapport.tex" 1778274264.20601 22475 b0e7f2bff9921ce478a5b05bcc64f52d ""
   "/usr/share/texlive/texmf-dist/dvips/pst-tools/pst-tools.pro" 1632691628 8227 6f74f061e0659e2d4a1eaab0a273b6e8 ""
   "/usr/share/texlive/texmf-dist/dvips/pstricks/pst-algparser.pro" 1591734865 30047 8a855069b8c74fd47ffa0f2ee54eac87 ""
   "/usr/share/texlive/texmf-dist/dvips/pstricks/pstricks.pro" 1682884434 37460 062a8ec90ec6dcd831b11f90d3671504 ""
@@ -18,6 +18,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr8t.tfm" 1136768653 1384 4632f5e54900a7dadbb83f555bc61e56 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm" 1136768653 4524 6bce29db5bc272ba5f332261583fee9c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb8t.tfm" 1136768653 6880 f19b8995b61c334d78fc734065f6b4d4 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmbc8t.tfm" 1136768653 16820 c06a5e067b0ad78c9474777b7e2265b7 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm" 1136768653 4408 25b74d011a4c66b7f212c0cc3c90061b ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm" 1136768653 6672 e3ab9e37e925f3045c9005e6d1473d56 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm" 1136768653 4640 532ca3305aad10cc01d769f3f91f1029 ""
@@ -72,6 +73,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb" 1136849748 45458 a3faba884469519614ca56ba5f6b1de1 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/courier/pcrr8t.vf" 1136768653 2184 8475af1b9cfa983db5f46f5ed4b8f9f7 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf" 1136768653 2340 df9c920cc5688ebbf16a93f45ce7bdd3 ""
+  "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmbc8t.vf" 1136768653 3604 29c743896336655d7560376b87cafe22 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr8t.vf" 1136768653 2348 91706c542228501c410c266421fbe30c ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf" 1136768653 2328 6cd7df782b09b29cfc4d93e55b6b9a59 ""
   "/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -238,9 +240,9 @@
   "/var/lib/texmf/tex/generic/config/language.dat" 1778161789.67944 3130 154e48c83201984f72bef83e7b630ea9 ""
   "/var/lib/texmf/web2c/luahbtex/lualatex.fmt" 1778161805 12241874 cddebae77ef8b44e6f9c31873ce8cb54 ""
   "ir.cls" 1777147190.82842 4737 3c482dfba8a8049a70e09310a9538d45 ""
-  "rapport.aux" 1778243483.73952 2985 07d89e822a10a7eaacd52355c0273299 "lualatex"
-  "rapport.bbl" 1778242592.65394 2341 fc212dcf51f1b25b610b0f53de9733d1 "bibtex rapport"
-  "rapport.tex" 1778243483.02252 17519 303be48368c18881f3acd5b828a3233d ""
+  "rapport.aux" 1778274264.93301 4031 a1ac93b12a8235d57b643ad5e6ba911a "lualatex"
+  "rapport.bbl" 1778273974.11354 2093 f39f290089df32334b22e52e1d5c5e06 "bibtex rapport"
+  "rapport.tex" 1778274264.20601 22475 b0e7f2bff9921ce478a5b05bcc64f52d ""
   (generated)
   "rapport.aux"
   "rapport.log"

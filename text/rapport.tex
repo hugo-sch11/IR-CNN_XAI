@@ -105,7 +105,7 @@ On peut projeter des familles sur des critères, les méthodes d'attributions so
 Cette liste n'est pas exhaustive mais présente "l'essentiel", il existe d'autres familles et sous-familles de méthodes d'explicabilité.
 
 
-\section{Les méthodes d'explicabilité}
+\section{Les méthodes d'explicabilité}\label{sec.methodesexplicabilite}
 
 Maintenant nous allons discuter des méthodes d'explicabilité traitées pour mieux les comprendre.
 
@@ -128,7 +128,7 @@ où :
     \item $C$ : nombre de canaux ($C$ = 3 pour une image RGB)
 \end{itemize}
 
-\subsection{Les méthodes d'attributions}
+\subsection{Les méthodes d'attributions}\label{subsec:attributions}
 
 Les méthodes d'attributions visent à quantifier la contribution de chaque entrée (par exemple chaque pixel d'une image) à la prédiction du modèle.
 
@@ -160,10 +160,12 @@ avec :
 
 Chaque dérivée partielle $\frac{\partial f(x)}{\partial x_i}$ mesure l'influence d'une variation locale du pixel $x_i$ sur la prédiction du modèle.
 
-Une valeur élevée du gradient indique qu'une faible modification du pixel considéré peut fortement affecter la sortie du réseau.\\
-\cite{simonyan2013saliency}
+Une valeur élevée du gradient indique qu'une faible modification du pixel considéré peut fortement affecter la sortie du réseau.
+\cite{simonyan2013saliency} \newline
 
-\subsection{Les méthodes de perturbations}
+Certaines méthodes d'attributions modernes proposent des variantes visant à améliorer ce calcul de sensibilité locale. Nous en verrons une dans la section \ref{subsec:ig}.
+
+\subsection{Les méthodes de perturbations}\label{subsec:perturbations}
 
 Les méthodes de perturbations consistent à modifier volontairement certaines parties de l'entrée afin d'observer l'impact sur la prédiction du modèle.
 
@@ -210,9 +212,11 @@ Les méthodes d'activations exploitent les activations internes du réseau de ne
 
 Elles reposent sur l'idée que les CNN apprennent progressivement des représentations hiérarchiques des données (\ref{subsec:rappel}) : les premières couches détectent des motifs simples (contours, textures), tandis que les couches profondes capturent des structures plus complexes et sémantiques.\\
 
-Soit une couche convolutionnelle $l$ prenant en entrée un tenseur $X^{(l)} \in \mathbb{R}^{H_l \times W_l \times C_l}$, où $C_l$ désigne le nombre de canaux d'entrée.\\
+Soit une couche convolutionnelle $l$ prenant en entrée un tenseur
+$X^{(l)} \in \mathbb{R}^{H_l \times W_l \times C_l}$,
+où $C_l$ désigne le nombre de canaux d'entrée.\\
 
-Chaque filtre $k$ de cette couche produit une carte d'activation (ou canal de sortie) :
+Chaque filtre $k$ de cette couche produit une carte d'activation :
 
 \begin{equation}
 A_k^{(l)} \in \mathbb{R}^{H_l' \times W_l'}
@@ -222,52 +226,15 @@ avec :
 \begin{itemize}
     \item $H_l'$ : hauteur de la carte d'activation,
     \item $W_l'$ : largeur de la carte d'activation,
-    \item $k$ : indice du filtre considéré (donc du canal de sortie associé).\\
+    \item $k$ : indice du filtre considéré.\\
 \end{itemize}
 
-On distingue ainsi :
-\begin{itemize}
-    \item les \textbf{canaux d'entrée} : composantes de $X^{(l)}$ (ex : RGB ou cartes d'activations de la couche précédente),
-    \item les \textbf{canaux de sortie} : les cartes d'activation $A_k^{(l)}$ produites par les filtres.\\
-\end{itemize}
-
-Chaque valeur de $A_k^{(l)}$ représente la réponse du filtre $k$ à une région locale de l'entrée.
+Chaque valeur de $A_k^{(l)}$ représente la réponse du filtre $k$ à une région locale de l'entrée.\\
 
 Des activations élevées indiquent que certaines caractéristiques présentes dans cette région sont fortement détectées par le réseau.\\
 
-Certaines méthodes, comme Grad-CAM, combinent les activations avec les gradients afin de produire une carte d'importance spatiale.
-
-Les poids associés à chaque carte d'activation sont calculés à partir du gradient de la sortie $f(x)$ par rapport aux activations :
-
-\begin{equation}
-\alpha_k^{(l)} =
-\frac{1}{H_l' W_l'}
-\sum_{i=1}^{H_l'}
-\sum_{j=1}^{W_l'}
-\frac{\partial f(x)}{\partial A_{k,i,j}^{(l)}}
-\end{equation}
-
-où :
-\begin{itemize}
-    \item $\alpha_k^{(l)}$ : importance du filtre $k$,
-    \item $A_{k,i,j}^{(l)}$ : activation à la position $(i,j)$ de la carte de sortie,
-    \item $f(x)$ : prédiction du modèle.\\
-\end{itemize}
-
-La carte d'activation pondérée est ensuite obtenue par :
-
-\begin{equation}
-L^{(l)} =
-\mathrm{ReLU}
-\left(
-\sum_k
-\alpha_k^{(l)} A_k^{(l)}
-\right)
-\end{equation}
-
-Une valeur élevée dans $L^{(l)}$ indique que la région correspondante de l'image contribue fortement à la prédiction du modèle.
-\cite{selvaraju2017grad}
-
+Certaines méthodes d'activations utilisent directement ces cartes d'activations afin de localiser les régions importantes pour la prédiction du modèle.
+D'autres combinent les activations avec les gradients afin de produire des cartes d'importance spatiale plus précises, nous étudierons celà dans la section \ref{subsec:gc}.
 
 \section{Expérimentation}
 
@@ -311,13 +278,152 @@ Ce changement nous a permis d'obtenir des visualisations plus détaillées, qual
 \subsection{Les méthodes mise en oeuvre}
 
 Du côté des méthodes d'explicabilité choisis, nous avons choisis une méthode d'attribution (intégré), une méthode de perturbation, et une méthode d'activation.
-Nous allons en parler dans la section qui suit.
-% TODO : DETAILLER CHAQUE MÉTHODE..
+Nous allons présenter les méthodes mise en oeuvre et détailler ce qui changent par rapport aux formules générales de la section \ref{sec.methodesexplicabilite}.
+
+\subsection{Gradients Intégré}\label{subsec:ig}
+
+Les Gradients Intégré (IG) est une méthode d'explicabilité appartenant à la famille des méthodes d'attribution.
+
+Contrairement aux méthodes basées uniquement sur le gradient local, IG calcule l'importance d'une entrée en intégrant les gradients le long d'un chemin reliant une entrée de référence à l'entrée étudiée.\\
+
+Soit :
+
+\begin{equation}
+\mathrm{IntegratedGradients}_i(x)
+=
+(x_i - x_i')
+\int_{0}^{1}
+\frac{\partial F\big(x' + \alpha (x - x')\big)}
+{\partial x_i}
+\, d\alpha
+\end{equation}
+
+où :
+\begin{itemize}
+    \item $x$ : entrée du modèle,
+    \item $x'$ : baseline (entrée de référence),
+    \item $\alpha$ : coefficient d'interpolation,
+    \item $F$ : fonction du modèle,
+    \item $i$ : dimension de l'entrée considérée.\\
+\end{itemize}
+
+Cette intégrale est généralement approximée numériquement à l'aide d'une somme de Riemann :
+
+\begin{equation}\label{equation:riemannapprox}
+\mathrm{IntegratedGradients}^{approx}_{i}(x)
+=
+(x_i - x'_i)
+\sum_{k=1}^{m}
+\frac{\partial F\big(x'+\frac{k}{m}(x-x')\big)}
+{\partial x_i}
+\times
+\frac{1}{m}
+\end{equation}
+
+où $m$ représente le nombre de pas utilisés dans l'approximation.\\
+
+Integrated Gradients vérifie également la propriété suivante :
+
+\begin{equation}
+\sum_i \mathrm{IntegratedGradients}_i(x) = F(x) - F(x')
+\end{equation}
+
+Cette propriété indique que la somme des contributions attribuées aux entrées correspond à la différence entre la prédiction obtenue pour l'entrée réelle et celle obtenue pour la baseline.\\
+
+Intuitivement, la méthode mesure la contribution totale de chaque entrée le long du chemin reliant la baseline à l'entrée étudiée, plutôt que d'évaluer uniquement une sensibilité locale en un point donné.
+
+Cette approche permet notamment de réduire les problèmes de saturation du gradient, pouvant apparaître avec certaines fonctions d'activation, et fournit des explications généralement plus stables que les méthodes reposant uniquement sur le gradient local.\\
+\cite{sundararajan17axiomatic_attribution}
+
+\subsection{Occlusion}
+
+Occlusion est une méthode d'explicabilité appartenant à la famille des méthodes de perturbations présentée dans la section~\ref{subsec:perturbations}.
+
+Elle consiste à appliquer localement une perturbation sur différentes régions de l'image afin d'évaluer leur importance pour la prédiction du modèle.\\
 
 
-\section{Discussion}
+\subsection{Grad-CAM}\label{subsec:gc}
 
-% TODO
+Grad-CAM (Gradient-weighted Class Activation Mapping) est une méthode d'explicabilité basée sur les activations (\ref{subsec:gc}) et les gradients (\ref{subsec:attributions}).
+
+Elle utilise les gradients de la sortie du modèle par rapport aux cartes d'activations d'une couche convolutionnelle afin d'estimer l'importance de chaque filtre.\\
+
+Grad-CAM calcule d'abord l'importance de chaque filtre à partir du gradient de la sortie du modèle $f(x)$ par rapport aux activations :
+
+\begin{equation}
+\alpha_k^{(l)} =
+\frac{1}{H_l' W_l'}
+\sum_{i=1}^{H_l'}
+\sum_{j=1}^{W_l'}
+\frac{\partial f(x)}{\partial A_{k,i,j}^{(l)}}
+\end{equation}
+
+avec :
+\begin{itemize}
+    \item $\alpha_k^{(l)}$ : poids associé au filtre $k$,
+    \item $A_{k,i,j}^{(l)}$ : activation à la position $(i,j)$,
+    \item $f(x)$ : prédiction du modèle pour l'image d'entrée $x$.\\
+\end{itemize}
+
+Ces poids permettent d'estimer la contribution de chaque carte d'activation à la prédiction finale.
+
+La carte d'importance spatiale est ensuite obtenue en combinant les activations pondérées :
+
+\begin{equation}
+L^{(l)} =
+\mathrm{ReLU}
+\left(
+\sum_k
+\alpha_k^{(l)} A_k^{(l)}
+\right)
+\end{equation}
+
+où :
+\begin{itemize}
+    \item $L^{(l)}$ : carte d'explication produite par Grad-CAM,
+    \item $\mathrm{ReLU}$ : fonction conservant uniquement les contributions positives.\\
+\end{itemize}
+
+L'application de la fonction ReLU permet de ne conserver que les régions ayant une influence positive sur la classe prédite.
+
+Une valeur élevée dans $L^{(l)}$ indique que la région correspondante de l'image contribue fortement à la décision du modèle.\\
+
+La carte obtenue est ensuite redimensionnée à la taille de l'image d'entrée afin d'être visualisée sous forme de carte de chaleur superposée à l'image originale.\\
+
+\hrule
+
+\begin{table}[h]
+    \centering
+    \caption{Tableau des hyperparamètres de chaque méthodes introduites}
+
+    \begin{tabular}{|c|c|c|}
+        \hline
+        IG & Occlusion & Grad-CAM \\
+        \hline
+        nombre de pas $m$* & dimension du rectangle & couche de convolution choisie \\
+        baseline*** & la foulée** & \\
+        & baseline*** & \\
+        \hline
+    \end{tabular}
+\end{table}
+*le nombre de pas $m$ choisie pour l'approximation de Riemann de l'intégrale (équation \ref{equation:riemannapprox})\\
+**comment se déplace le rectangle à chaque itération\\
+***la baseline est en générale ; soit un tenseur nul (image noire), soit une version bruitée de l'image d'entrée issue d'une distribution aléatoire\\
+(pour l'occlusion, c'est ce par quoi est remplacé la zone couverte par le rectangle)
+
+\section{Résultats et discussion}
+
+Dans cette partie, nous allons présenter et analyser les résultats obtenus avec les différentes méthodes d'explicabilité étudiées et mise en oeuvre.\\
+
+Nous allons aussi discuter des informations apportées par chaque méthode et de leurs limites.\\
+
+Nous allons également chercher à évaluer la pertinence et la fiabilité des explications produites par le modèle.
+
+\subsection{Gradients Intégré}
+
+\subsection{Occlusion}
+
+\subsection{Grad-CAM}
 
 
 \section{Conclusion}

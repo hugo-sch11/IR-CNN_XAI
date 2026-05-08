@@ -54,9 +54,13 @@ Du côté des méthodes d'explicabilité choisis, nous avons choisis une méthod
 DETAILLER CHAQUE MÉTHODE..
 
 
-### Discussion
+### Résultats
 (--Interprétation des résultats, limites des méthodes, cas fonctionnel ou non, fiabilité des explications--)
+Dans cette partie, nous allons présenter et analyser les résultats obtenus avec les différentes méthodes d'explicabilité étudiées et mise en oeuvre.
 
+Nous allons aussi discuter des informations apportées par chaque méthode, de leurs limites, ainsi que de leur comportement selon les images et les prédictions considérées.
+
+Nous cherchons également à évaluer la pertinence et la fiabilité des explications produites par le modèle.
 
 ### Conclusion et perspectives
 (--Résumé, réponse à la problématique, ouvertures, ...--)

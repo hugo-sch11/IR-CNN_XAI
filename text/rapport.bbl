@@ -34,12 +34,6 @@ M.~Sundararajan, A.~Taly, Q.~Y. (2017).
 \newblock {\em Proceedings of the 34th International Conference on Machine
   Learning}.
 
-\bibitem[Selvaraju et~al., 2017]{selvaraju2017grad}
-Selvaraju, R.~R. et~al. (2017).
-\newblock Grad-cam: Visual explanations from deep networks via gradient-based
-  localization.
-\newblock In {\em IEEE International Conference on Computer Vision}.
-
 \bibitem[Simonyan et~al., 2013]{simonyan2013saliency}
 Simonyan, K., Vedaldi, A., and Zisserman, A. (2013).
 \newblock Deep inside convolutional networks: Visualising image classification
