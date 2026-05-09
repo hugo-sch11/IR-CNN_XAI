@@ -1,6 +1,6 @@
 \documentclass{ir}
 
-\titre{Explicabilité des réseaux de neuronnes convolutifs.}
+\titre{Explicabilité des réseaux de neurones convolutifs.}
 
 \auteur{Hugo Schmitt\affil{1} et Antonin Leroy\affil{2}}
 
@@ -16,15 +16,15 @@
     antonin.leroy9@etu.univ-lorraine.fr
 }
 
-\titrecourt{Explicabilité des réseaux de neuronnes convolutifs.}
+\titrecourt{Explicabilité des réseaux de neurones convolutifs.}
 
 \nomcourt{H. Schmitt et A. Leroy}
 
 \encadrant{A. Blansché}
 
-\resume{Ce document va traité de l'explicabilité pour les réseaux de neuronnes convolutifs.}
+\resume{Ce document va traité de l'explicabilité pour les réseaux de neurones convolutifs.}
 
-\motcle{Explicabilité réseaux de neuronnes convolutifs, Explicabilité CNN, XAI CNN}
+\motcle{Explicabilité réseaux de neurones convolutifs, Explicabilité CNN, XAI CNN}
 
 \begin{document}
 
@@ -265,7 +265,7 @@ D'autre part, les performances du modèle restaient modestes (\textasciitilde 70
 
 % archi 2
 Afin de remédier à ces limitations, nous avons opté pour une architecture plus profonde, à savoir ResNet-18, introduite dans \cite{DeepResidualLearningForImageRecognition}.
-Ce modèle, composé de dix-huit couches, repose sur le principe des connexions résiduelles, facilitant l'entraînement de réseaux de neuronnes profonds.
+Ce modèle, composé de dix-huit couches, repose sur le principe des connexions résiduelles, facilitant entre autres l'entraînement de réseaux de neurones profonds.
 
 % dataset 2
 En ce qui concerne les données, nous avons remplacé CIFAR-10 par Imagenette, un sous-ensemble du célèbre ImageNet \cite{deng09imagenet}.
@@ -288,10 +288,10 @@ On a les classes suivantes :
 Ce changement nous a permis d'obtenir des visualisations plus détaillées, qualitatives et pertinentes, tout en améliorant les performances globales du modèle (\textasciitilde 95\%), sans entraîner des temps de calcul excessifs lors l'entraînement du modèle et de l'exécution de nos programmes.
 
 
-\subsection{Les méthodes mise en oeuvre}
+\subsection{Les méthodes mises en oeuvre}
 
 Du côté des méthodes d'explicabilité choisis, nous avons choisis une méthode d'attribution (intégré), une méthode de perturbation, et une méthode d'activation.
-Nous allons présenter les méthodes mise en oeuvre et détailler ce qui changent par rapport aux formules générales de la section \ref{sec.methodesexplicabilite}.
+Nous allons présenter les méthodes mises en oeuvre et détailler ce qui changent par rapport aux formules générales de la section \ref{sec.methodesexplicabilite}.
 
 \subsection{Gradients Intégrés}\label{subsec:ig}
 
@@ -413,120 +413,147 @@ La carte obtenue est ensuite redimensionnée à la taille de l'image d'entrée a
         \hline
         IG & Occlusion & Grad-CAM \\
         \hline
-        nombre de pas $m$* & dimension du rectangle & couche de convolution choisie \\
-        baseline*** & la foulée** & \\
-        & baseline*** & \\
+        nombre de pas $m$, & dimension du rectangle, & couche de convolution choisie \\
+        baseline & la foulée, & \\
+        & baseline & \\
         \hline
     \end{tabular}
 \end{table}
-*le nombre de pas $m$ choisie pour l'approximation de Riemann de l'intégrale (équation \ref{equation:riemannapprox})\\
-**comment se déplace le rectangle à chaque itération\\
-***la baseline est en générale ; soit un tenseur nul (image noire), soit une version bruitée de l'image d'entrée issue d'une distribution aléatoire\\
-(pour l'occlusion, c'est ce par quoi est remplacé la zone couverte par le rectangle)
+
 
 \section{Résultats et discussion}
 
-Dans cette partie, nous allons présenter et analyser les résultats obtenus avec les différentes méthodes d'explicabilité étudiées et mise en oeuvre.\\
+Dans cette partie, nous allons présenter et analyser les résultats obtenus avec les différentes méthodes d'explicabilité étudiées et mises en oeuvre.
 
-Nous allons aussi discuter des informations apportées par chaque méthode et de leurs limites.\\
+Nous allons aussi discuter des informations apportées par chaque méthode et de leurs limites.
 
-Puis nous allons également chercher à évaluer la pertinence et la fidélité des explications produites par le modèle.
+Puis nous allons également chercher à évaluer la pertinence et la fidélité des explications produites par le modèle.\\
+
+(\textit{Pour chaque visualisation, les couleurs chaudes correspondent aux zones ayant la plus forte contribution dans la prédiction du modèle et inversement.})
 
 \subsection{Gradients Intégrés}
 
-Les méthodes d'attributions présentent plusieurs avantages.
-Elles sont généralement simples à mettre en oeuvre, peu coûteuses en calcul et permettent d'obtenir une visualisation intuitive du comportement local du modèle.
-Elles offrent ainsi une première interprétation des régions de l'image qui influencent le plus la prédiction du réseau.
-Les gradients intégrés possèdent en plus des garanties théoriques grâce aux axiomes de sensibilité et d'invariance à l'implémentation, ce qui renforce leur crédibilité.
+Les méthodes d'attribution présentées sont simples à mettre en œuvre, peu coûteuses en calcul et offrent une visualisation intuitive des régions influençant la prédiction du modèle.
+Les gradients intégrés possèdent également des garanties théoriques grâce aux axiomes de sensibilité et d'invariance à l'implémentation, renforçant leur crédibilité.
 
-Cependant, ces approches d'attributions présentent aussi plusieurs limites.
-Tout d'abord, les cartes de chaleur produites sont souvent bruitées, donc difficiles à interpréter précisement car parfois instable visuellement.
-En effet, nous savons que les CNN apprennent principalement des motifs de haut niveau et des structures spatiales complexes plutôt qu'une signification isolée de chaque pixel.
-Une forte attribution sur un pixel ne signifie donc pas nécessairement que ce pixel possède une importance sémantique réelle pour le modèle.
+Cependant, les cartes d'attribution obtenues sont souvent bruitées et parfois instables visuellement, ce qui complique leur interprétation.
+Les CNN apprennent principalement des motifs de haut niveau et des structures spatiales complexes plutôt qu'une signification isolée de chaque pixel (section \ref{subsec:rappel}) ; ainsi, une forte attribution locale ne traduit pas nécessairement une importance sémantique réelle.
 
-De plus, les méthodes basées sur les gradients peuvent être sensibles à la saturation des fonctions d'activation.
-Dans certaines régions, le gradient peut devenir très faible alors même que certaines caractéristiques influencent fortement la prédiction, ce qui peut conduire à des attributions incomplètes ou trompeuses.
-Toutefois, ce problème concerne surtout certaines fonctions d'activation, moins utilisées de nos jours.
-Les gradients intégrés permettent de palier à ce problème, grâce à l'intégration le long du chemin entre $x$ et $x'$ (section \ref{subsec:ig}), mais en contrepartie augmente le temps de calcul (somme de gradients).
+Les méthodes basées sur les gradients peuvent aussi être sensibles à la saturation des fonctions d'activation : certaines caractéristiques peuvent fortement influencer la prédiction malgré des gradients faibles, produisant des attributions incomplètes ou trompeuses.
+Les gradients intégrés atténuent ce problème grâce à l'intégration le long du chemin entre $x$ et $x'$ (section \ref{subsec:ig}), au prix d'un temps de calcul plus élevé.
 
-Un point important concernant les gradients intégrés est le choix des hyperparamètres, la baseline (valeure de référence) ainsi que le nombre de pas $m$ (section \ref{subsec:ig}), qui influence fortement les résultats obtenus.
-Dans l'article \cite{sundararajan17axiomatic_attribution}, les auteurs suggèrent un tenseur nul ou baseline construite à partir de l'image via une distribution aléatoire, et entre 20 et 300 pas (voir plus) pour avoir une bonne approximation de l'intégrale.
+Le choix des hyperparamètres reste important, notamment la baseline et le nombre de pas $m$ (section \ref{subsec:ig}), qui influencent fortement les résultats.
+Dans \cite{sundararajan17axiomatic_attribution}, les auteurs recommandent une baseline nulle ou générée aléatoirement à partir de l'image, ainsi qu'entre 20 et 300 pas pour obtenir une approximation satisfaisante de l'intégrale.
 
-Enfin, ces méthodes fournissent principalement une explicabilité locale, c'est-à-dire une justification d'une prédiction particulière pour une image donnée.
-Elles permettent difficilement de comprendre le comportement global du modèle ou les concepts abstraits réellement appris par le réseau de neuronnes.\\
+Enfin, ces méthodes fournissent principalement une explicabilité locale : elles justifient une prédiction pour une image donnée, mais permettent difficilement de comprendre le comportement global du modèle ou les concepts abstraits appris par le réseau.
 
 \begin{figure}
     \epsfig{figure=img/ig2.png,width=.5\textwidth}
     \epsfig{figure=img/ig5.png,width=.5\textwidth}
-    \caption{Gradients Intégrés (église)}
+    \caption{Gradients Intégrés}
     \label{fig:ig1}
 \end{figure}
 
-Sur la figure \ref{fig:ig1}, on peut observer deux cartes d'attribution avec la méthode des Gradients Intégrés.
-Plus les couleurs sont chaudes, plus la valeur d'attribution est forte.
-Comme expliqué précédemment, ces représentent l'importance de chaque pixel dans la prédiction du modèle.
+La figure \ref{fig:ig1} présente deux cartes d'attribution obtenues avec les Gradients Intégrés.
 
-On retrouve le caractère plus ou moins bruité de ces méthodes d'attributions selon l'image et la classe.
-Cependant,les régions importantes de l'objet restent globalement bien mises en évidence.
+Les cartes montrent le caractère parfois bruité et instable de ces méthodes, bien que les régions importantes de l'objet restent globalement bien mises en évidence.
+Elles offrent néanmoins une localisation spatiale précise des régions influentes, ce qui constitue un avantage majeur des méthodes basées sur les gradients.
 
-Les cartes obtenues apparaissent relativement détaillées et permettent une localisation fien des régions influentes.
-Cette précision spatiale constitue un avantage important des méthodes basées sur les gradients.
-
-Enfin, les explications produites apparaissent globalement fidèles au comportement local du modèle.
-Néanmoins, elles présentent encore un manque de robustesse et une certaine instabilité visuelle.
+Les explications produites apparaissent globalement fidèles au comportement local du modèle, malgré un manque persistant de robustesse et de stabilité visuelle.
 
 \subsection{Occlusion}
 
 Les méthodes de perturbation comme Occlusion présentent plusieurs avantages.
-Contrairement aux méthodes basées uniquement sur les gradients, elles évaluent directement l'impact d'une région de l'image sur la prédiction du modèle.
-L'explication obtenue est donc souvent plus intuitive : si le masquage d'une zone entraîne une forte baisse de confiance du modèle, cela signifie que cette région contribue fortement à la décision.
+Elles évaluent directement l'impact d'une région de l'image sur la prédiction du modèle : une forte baisse de confiance après masquage indique une contribution importante de cette zone à la décision.
 
-Les cartes produites par Occlusion sont généralement plus stables et moins bruitées que celles obtenues avec les méthodes d'attribution.
-Les régions importantes apparaissent souvent de manière plus homogène et plus faciles à interpréter visuellement.
-Cette approche permet également de mieux mettre en évidence des zones ayant une réelle importance sémantique pour la prédiction.
+Les cartes produites sont généralement plus stables, plus lisses et plus faciles à interpréter visuellement que celles des méthodes basées sur les gradients.
+Les régions importantes apparaissent souvent de manière plus homogène, ce qui facilite l'identification des zones réellement influentes.
 
-Cependant, les méthodes de perturbation présentent aussi plusieurs limites importantes.
-Tout d'abord, elles sont généralement beaucoup plus coûteuses en calcul.
-En effet, Occlusion nécessite de réaliser de nombreuses inférences du modèle en masquant successivement différentes régions de l'image.
-Le temps d'exécution dépend donc fortement de la taille du masque et du pas de déplacement utilisé.
+Cependant, ces méthodes sont beaucoup plus coûteuses en calcul, car elles nécessitent de multiples inférences du modèle en masquant successivement différentes régions de l'image.
+Le temps d'exécution dépend fortement de la taille du masque et du pas de déplacement utilisé.
 
-De plus, le choix des hyperparamètres influence fortement les résultats obtenus.
-Un masque trop petit peut produire des cartes très détaillées mais bruitées, tandis qu'un masque trop grand peut supprimer trop d'informations et conduire à des explications imprécises.
-Le choix de la valeur de remplacement (baseline) peut également modifier le comportement du modèle de manière artificielle.
+Les résultats sont également sensibles au choix des hyperparamètres.
+Un masque trop petit peut produire des cartes détaillées mais bruitées, tandis qu'un masque trop grand peut supprimer excessivement l'information et réduire la précision des explications.
+La valeur de remplacement utilisée lors du masquage peut aussi modifier artificiellement le comportement du modèle.
 
-Une autre limite importante est que la perturbation appliquée peut générer des images peu naturelles.
-Le modèle est alors évalué sur des entrées différentes de celles observées durant l'entraînement, ce qui peut biaiser l'interprétation obtenue.
-
-Enfin, comme les méthodes d'attribution, Occlusion fournit principalement une explicabilité locale.
-Elle permet de comprendre quelles régions influencent une prédiction particulière, mais reste limitée pour analyser le comportement global du modèle ou les représentations internes apprises par le réseau.\\
+Enfin, les perturbations appliquées génèrent parfois des images peu naturelles.
+Le modèle est alors évalué sur des entrées différentes de celles vues pendant l'entraînement, ce qui peut biaiser l'interprétation obtenue.
 
 \begin{figure}
     \epsfig{figure=img/occ1.png,width=.5\textwidth}
     \epsfig{figure=img/occ2.png,width=.5\textwidth}
-    \caption{Occlusion (tronçonneuse, camion poubelle)}
+    \caption{Occlusion}
     \label{fig:occ1}
 \end{figure}
 
-Sur la figure \ref{fig:occ1}, les régions les plus chaudes correspondent aux zones dont le masquage provoque la plus forte diminution de la prédiction du modèle.
+La figure \ref{fig:occ1} présente des cartes d'attribution obtenues avec la méthode Occlusion.
 
-Contrairement aux cartes obtenues avec les méthodes d'attributions, les explications apparaissent en général plus lisses et moins bruitées.
-Les zones importantes sont plus regroupées spatialement, ce qui facilite l'interprétation visuelle des résultats.
+Les zones importantes apparaissent plus regroupées spatialement, ce qui facilite l'interprétation visuelle.
+En revanche, la précision spatiale reste limitée par la taille du masque utilisé, ce qui produit parfois des régions importantes relativement grossières.
 
-Cependant, la précision spatiale reste limitée par la taille du masque utilisé lors de l'occlusion.
-Certaines régions importantes apparaissent donc de manière relativement grossière.
-
-Malgré cette limite, les explications obtenues semblent globalement cohérentes avec les éléments visuels utilisés par le modèle pour effectuer sa prédiction.
-
-% + regroupé spatiallement
+Malgré cette limitation, les explications obtenues restent globalement cohérentes avec les éléments visuels utilisés par le modèle pour effectuer sa prédiction.
 
 \subsection{Grad-CAM}
+
+Les méthodes basées sur les activations, comme Grad-CAM, permettent de visualiser les régions de l'image contribuant le plus à la prédiction en s'appuyant sur les représentations internes apprises par le CNN.
+
+Grad-CAM produit généralement des cartes de chaleur lisses et facilement interprétables, où les régions importantes apparaissent sous forme de zones cohérentes correspondant à des parties significatives de l'objet.
+Cette approche est également peu coûteuse en calcul, puisqu'une seule rétropropagation suffit pour calculer les gradients associés à la couche choisie.
+
+Cependant, la qualité des explications dépend fortement de la couche convolutionnelle utilisée.
+Les couches profondes produisent des représentations plus sémantiques mais moins précises spatialement, tandis que les couches proches de l'entrée offrent davantage de détails locaux mais des représentations moins sémantiques.
+
+La résolution des cartes reste aussi limitée par la taille des tenseurs internes du réseau, et le redimensionnement vers la taille de l'image peut entraîner une perte de précision spatiale.
+De plus, Grad-CAM met principalement en évidence des régions globalement importantes sans fournir d'attribution fine au niveau des pixels, ce qui rend les explications relativement approximatives.
+
+Enfin, comme les autres méthodes étudiées, Grad-CAM fournit essentiellement une explicabilité locale.
+
+\begin{figure}
+    \epsfig{figure=img/gc1.png,width=.5\textwidth}
+    \epsfig{figure=img/gc2.png,width=.5\textwidth}
+    \caption{Grad-CAM, dernière couche de convolution}
+    \label{fig:gc1}
+\end{figure}
+
+La figure \ref{fig:gc1} montre que Grad-CAM met principalement en évidence la structure globale de l'objet prédit, en raison de l'utilisation de la dernière couche de convolution.
+
+Les cartes obtenues apparaissent plus lisses et homogènes que celles des méthodes d'attribution, ce qui facilite leur interprétation visuelle et l'identification des régions exploitées par le modèle.
+En contrepartie, elles manquent de détails fins et de précision locale.
+
+Malgré cette limitation, les visualisations produites restent globalement cohérentes avec le comportement du modèle et offrent des explications plus robustes et interprétables.
+
+\subsection*{Comparaison des méthodes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Méthode} & \textbf{Précision spatiale} & \textbf{Bruit} & \textbf{Coût calculatoire} & \textbf{Interprétabilité} \\
+\hline
+IG & élevée & moyen à élevé & moyen & moyenne \\
+\hline
+Occlusion & moyenne & faible à moyen & élevé & élevée \\
+\hline
+Grad-CAM  & faible à moyenne & faible & faible & élevée \\
+\hline
+\end{tabular}
+\caption{Comparaison des méthodes d'explicabilité}
+\label{tab:comparaison_methodes}
+\end{table}
 
 
 \section{Conclusion}
 
 Le document doit se terminer par une conclusion.
+%%
+% METHODES D'EXPLICABILITÉ != COMPORTEMENT GLOBAL
+% Elle permet d'interpréter une prédiction particulière mais ne permet pas directement de comprendre les concepts globaux appris par le modèle ou les éventuels biais présents dans les données d'entraînement.
+% Elle permet de comprendre quelles régions influencent une prédiction particulière, mais reste limitée pour analyser le comportement global du modèle ou les représentations internes apprises par le réseau.
 
-\remerciement{Un court paragraphe peut-être utilisé à la fin pour les remerciements.}
+\remerciement{
+%Un court paragraphe peut-être utilisé à la fin pour les remerciements.
+Nous tenions à remercier notre encadrant, M. Blansché, ...
+}
 
 \bibliographystyle{apalike}
 \bibliography{IR_biblio}
@@ -534,7 +561,19 @@ Le document doit se terminer par une conclusion.
 \appendix
 
 \section*{Annexe}
+\centering Visualisations en multiplexe des méthodes abordées.
 
-Voici un exemple d'annexe. S'il y a plusieurs annexes, on utilisera la commande \texttt{$\backslash$section\{Nom de l'annexe\}}.
+\foreach \i in {1,...,20} {
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/multiplex\i.png}
+    \caption{Annexe multiplexe \i}
+\end{figure}
+}
+
+\begin{figure}
+    \centering \epsfig{figure=thumbnail.png,width=\textwidth}
+    \caption{Annexe multiplexe finale}
+\end{figure}
 
 \end{document}

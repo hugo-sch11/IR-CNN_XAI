@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023/Debian)  (format=lualatex 2026.5.7)  9 MAY 2026 17:45
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023/Debian)  (format=lualatex 2026.5.7)  9 MAY 2026 23:35
  restricted system commands enabled.
 **/home/hugo/Documents/uni/IR/implementation/text/rapport.tex
 (/home/hugo/Documents/uni/IR/implementation/text/rapport.tex
@@ -945,72 +945,179 @@ Underfull \hbox (badness 10000) in paragraph at lines 404--405
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 429--430
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 431--432
-
- []
-
-
-Overfull \hbox (2.77281pt too wide) in paragraph at lines 437--441
-[]\T1/ptm/m/n/10 Les mé-thodes d'at-tri-bu-tions pré-sentent plu-sieurs avan-t
-ages. Elles sont gé-né-ra-le-ment simples
- []
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 455--457
-
- []
-
-<img/ig2.png, id=47, 455.7025pt x 454.69875pt>
+<img/ig2.png, id=43, 455.7025pt x 454.69875pt>
 File: img/ig2.png Graphic file (type png)
 <use img/ig2.png>
-Package luatex.def Info: img/ig2.png  used on input line 459.
+Package luatex.def Info: img/ig2.png  used on input line 451.
 (luatex.def)             Requested size: 187.78813pt x 187.3782pt.
-<img/ig5.png, id=48, 451.6875pt x 451.6875pt>
+<img/ig5.png, id=44, 451.6875pt x 451.6875pt>
 File: img/ig5.png Graphic file (type png)
 <use img/ig5.png>
-Package luatex.def Info: img/ig5.png  used on input line 460.
+Package luatex.def Info: img/ig5.png  used on input line 452.
 (luatex.def)             Requested size: 187.78813pt x 187.79141pt.
 
-Overfull \hbox (1.90001pt too wide) in paragraph at lines 459--461
+Overfull \hbox (1.90001pt too wide) in paragraph at lines 451--453
+[][] [] 
+ []
+
+[10
+Missing character: There is no œ (U+0153) in font ptmr8t!
+]
+<img/occ1.png, id=49, 454.69875pt x 454.69875pt>
+File: img/occ1.png Graphic file (type png)
+<use img/occ1.png>
+Package luatex.def Info: img/occ1.png  used on input line 483.
+(luatex.def)             Requested size: 187.78813pt x 187.78757pt.
+<img/occ2.png, id=50, 452.69125pt x 453.695pt>
+File: img/occ2.png Graphic file (type png)
+<use img/occ2.png>
+Package luatex.def Info: img/occ2.png  used on input line 484.
+(luatex.def)             Requested size: 187.78813pt x 188.20377pt.
+
+Overfull \hbox (1.90001pt too wide) in paragraph at lines 483--485
 [][] [] 
  []
 
 [11<./img/ig2.png><./img/ig5.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 500--502
+<img/gc1.png, id=55, 453.695pt x 453.695pt>
+File: img/gc1.png Graphic file (type png)
+<use img/gc1.png>
+Package luatex.def Info: img/gc1.png  used on input line 512.
+(luatex.def)             Requested size: 187.78813pt x 187.78839pt.
+<img/gc2.png, id=56, 454.69875pt x 452.69125pt>
+File: img/gc2.png Graphic file (type png)
+<use img/gc2.png>
+Package luatex.def Info: img/gc2.png  used on input line 513.
+(luatex.def)             Requested size: 187.78813pt x 186.95848pt.
 
- []
-
-<img/occ1.png, id=53, 454.69875pt x 454.69875pt>
-File: img/occ1.png Graphic file (type png)
-<use img/occ1.png>
-Package luatex.def Info: img/occ1.png  used on input line 504.
-(luatex.def)             Requested size: 187.78813pt x 187.78757pt.
-<img/occ2.png, id=54, 452.69125pt x 453.695pt>
-File: img/occ2.png Graphic file (type png)
-<use img/occ2.png>
-Package luatex.def Info: img/occ2.png  used on input line 505.
-(luatex.def)             Requested size: 187.78813pt x 188.20377pt.
-
-Overfull \hbox (1.90001pt too wide) in paragraph at lines 504--506
+Overfull \hbox (1.90001pt too wide) in paragraph at lines 512--514
 [][] [] 
  []
 
+[12<./img/occ1.png><./img/occ2.png>]
+Overfull \hbox (3.88998pt too wide) in paragraph at lines 529--540
+ [][] 
+ []
 
-Underfull \vbox (badness 2318) has occurred while \output is active []
-
- [12<./img/occ1.png><./img/occ2.png>] (./rapport.bbl)
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 53
-8.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-) [13] [14]
-(./rapport.aux)
+(./rapport.bbl [13<./img/gc1.png><./img/gc2.png>])
+<img/multiplex1.png, id=63, 974.64125pt x 988.69376pt>
+File: img/multiplex1.png Graphic file (type png)
+<use img/multiplex1.png>
+Package luatex.def Info: img/multiplex1.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 380.98772pt.
+<img/multiplex2.png, id=64, 967.615pt x 979.66pt>
+File: img/multiplex2.png Graphic file (type png)
+<use img/multiplex2.png>
+Package luatex.def Info: img/multiplex2.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 380.25711pt.
+<img/multiplex3.png, id=65, 963.6pt x 982.67125pt>
+File: img/multiplex3.png Graphic file (type png)
+<use img/multiplex3.png>
+Package luatex.def Info: img/multiplex3.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 383.00034pt.
+<img/multiplex4.png, id=66, 962.59625pt x 979.66pt>
+File: img/multiplex4.png Graphic file (type png)
+<use img/multiplex4.png>
+Package luatex.def Info: img/multiplex4.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 382.2303pt.
+<img/multiplex5.png, id=67, 956.57375pt x 974.64125pt>
+File: img/multiplex5.png Graphic file (type png)
+<use img/multiplex5.png>
+Package luatex.def Info: img/multiplex5.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 382.6665pt.
+<img/multiplex6.png, id=68, 964.60374pt x 975.645pt>
+File: img/multiplex6.png Graphic file (type png)
+<use img/multiplex6.png>
+Package luatex.def Info: img/multiplex6.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 379.87476pt.
+<img/multiplex7.png, id=69, 963.6pt x 980.66376pt>
+File: img/multiplex7.png Graphic file (type png)
+<use img/multiplex7.png>
+Package luatex.def Info: img/multiplex7.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 382.21791pt.
+<img/multiplex8.png, id=70, 962.59625pt x 975.645pt>
+File: img/multiplex8.png Graphic file (type png)
+<use img/multiplex8.png>
+Package luatex.def Info: img/multiplex8.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 380.66377pt.
+<img/multiplex9.png, id=71, 963.6pt x 976.64874pt>
+File: img/multiplex9.png Graphic file (type png)
+<use img/multiplex9.png>
+Package luatex.def Info: img/multiplex9.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 380.65305pt.
+<img/multiplex10.png, id=72, 959.585pt x 976.64874pt>
+File: img/multiplex10.png Graphic file (type png)
+<use img/multiplex10.png>
+Package luatex.def Info: img/multiplex10.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 382.2625pt.
+<img/multiplex11.png, id=73, 958.58125pt x 974.64125pt>
+File: img/multiplex11.png Graphic file (type png)
+<use img/multiplex11.png>
+Package luatex.def Info: img/multiplex11.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 381.86343pt.
+<img/multiplex12.png, id=74, 966.61125pt x 976.64874pt>
+File: img/multiplex12.png Graphic file (type png)
+<use img/multiplex12.png>
+Package luatex.def Info: img/multiplex12.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 379.47574pt.
+<img/multiplex13.png, id=75, 959.585pt x 974.64125pt>
+File: img/multiplex13.png Graphic file (type png)
+<use img/multiplex13.png>
+Package luatex.def Info: img/multiplex13.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 381.47676pt.
+<img/multiplex14.png, id=76, 947.54pt x 970.62625pt>
+File: img/multiplex14.png Graphic file (type png)
+<use img/multiplex14.png>
+Package luatex.def Info: img/multiplex14.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 384.71872pt.
+<img/multiplex15.png, id=77, 960.58875pt x 979.66pt>
+File: img/multiplex15.png Graphic file (type png)
+<use img/multiplex15.png>
+Package luatex.def Info: img/multiplex15.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 383.0375pt.
+<img/multiplex16.png, id=78, 957.5775pt x 975.645pt>
+File: img/multiplex16.png Graphic file (type png)
+<use img/multiplex16.png>
+Package luatex.def Info: img/multiplex16.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 382.65866pt.
+<img/multiplex17.png, id=79, 957.5775pt x 975.645pt>
+File: img/multiplex17.png Graphic file (type png)
+<use img/multiplex17.png>
+Package luatex.def Info: img/multiplex17.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 382.65866pt.
+<img/multiplex18.png, id=80, 958.58125pt x 971.63pt>
+File: img/multiplex18.png Graphic file (type png)
+<use img/multiplex18.png>
+Package luatex.def Info: img/multiplex18.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 380.68362pt.
+<img/multiplex19.png, id=81, 960.58875pt x 978.65625pt>
+File: img/multiplex19.png Graphic file (type png)
+<use img/multiplex19.png>
+Package luatex.def Info: img/multiplex19.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 382.64505pt.
+<img/multiplex20.png, id=82, 958.58125pt x 974.64125pt>
+File: img/multiplex20.png Graphic file (type png)
+<use img/multiplex20.png>
+Package luatex.def Info: img/multiplex20.png  used on input line 572.
+(luatex.def)             Requested size: 375.57628pt x 381.86343pt.
+<thumbnail.png, id=83, 902.37125pt x 936.49875pt>
+File: thumbnail.png Graphic file (type png)
+<use thumbnail.png>
+Package luatex.def Info: thumbnail.png  used on input line 575.
+(luatex.def)             Requested size: 375.57628pt x 389.78291pt.
+ [14] [15<./img/multiplex1.png>] [16<./img/multiplex2.png>] [17<./img/multiplex3
+.png>] [18<./img/multiplex4.png>] [19<./img/multiplex5.png>] [20<./img/multiplex
+6.png>] [21<./img/multiplex7.png>] [22<./img/multiplex8.png>] [23<./img/multiple
+x9.png>] [24<./img/multiplex10.png>] [25<./img/multiplex11.png>] [26<./img/multi
+plex12.png>] [27<./img/multiplex13.png>] [28<./img/multiplex14.png>] [29<./img/m
+ultiplex15.png>]
+[30<./img/multiplex16.png>] [31<./img/multiplex17.png>] [32<./img/multiplex18.pn
+g>] [33<./img/multiplex19.png>] [34<./img/multiplex20.png>] [35<./thumbnail.png>
+] (./rapport.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -1018,15 +1125,15 @@ L3 programming layer <2024-01-22>
 )
 
 Here is how much of LuaTeX's memory you used:
- 16423 strings out of 476553
+ 16604 strings out of 476553
  100000,1977958 words of node,token memory allocated
- 3273 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 149 glue, 4 kern, 1 penalty, 2 glyph, 707 attribute
-, 81 glue_spec, 103 attribute_list, 1 write nodes
-   avail lists: 2:1859,3:206,4:48,5:244,6:59,7:7293,8:65,9:433,10:12,11:685
- 37939 multiletter control sequences out of 65536+600000
- 83 fonts using 5210343 bytes
- 90i,12n,88p,558b,354s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 4047 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 199 glue, 4 kern, 1 penalty, 2 glyph, 888 attribute
+, 83 glue_spec, 129 attribute_list, 1 write nodes
+   avail lists: 2:4788,3:390,4:124,5:255,6:76,7:7241,8:65,9:466,10:12,11:685
+ 38057 multiletter control sequences out of 65536+600000
+ 67 fonts using 4285559 bytes
+ 90i,12n,88p,558b,368s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/font
@@ -1037,15 +1144,14 @@ cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
-rw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on rapport.pdf (14 pages, 1475305 bytes).
+texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/u
+tmri8a.pfb>
+Output written on rapport.pdf (35 pages, 27834903 bytes).
 
-PDF statistics: 118 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
+PDF statistics: 199 PDF objects out of 1000 (max. 8388607)
+ 119 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 
