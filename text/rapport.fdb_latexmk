@@ -1,16 +1,16 @@
 # Fdb version 4
-["bibtex rapport"] 1778273974.10107 "rapport.aux" "rapport.bbl" "rapport" 1778274265.03725 0
+["bibtex rapport"] 1778341423.47087 "rapport.aux" "rapport.bbl" "rapport" 1778341530.09623 0
   "./IR_biblio.bib" 1778242409.79348 2579 f9e808babdc1464a0a14f822804bec4f ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "rapport.aux" 1778274264.93301 4031 a1ac93b12a8235d57b643ad5e6ba911a "lualatex"
+  "rapport.aux" 1778341529.98767 4428 5410f2637ac13e50f72befe29222f5ba "lualatex"
   (generated)
   "rapport.bbl"
   "rapport.blg"
   (rewritten before read)
-["lualatex"] 1778274264.28627 "/home/hugo/Documents/uni/IR/implementation/text/rapport.tex" "rapport.pdf" "rapport" 1778274265.03739 0
+["lualatex"] 1778341529.20278 "/home/hugo/Documents/uni/IR/implementation/text/rapport.tex" "rapport.pdf" "rapport" 1778341530.09638 0
   "/home/hugo/.texlive2023/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-regular.luc" 1778158671.72945 127309 677951b359b90ddbfa3eb54f696122f6 ""
   "/home/hugo/.texlive2023/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz" 1778158671.67645 76896 927f7b5683e23af56409adf801551c87 ""
-  "/home/hugo/Documents/uni/IR/implementation/text/rapport.tex" 1778274264.20601 22475 b0e7f2bff9921ce478a5b05bcc64f52d ""
+  "/home/hugo/Documents/uni/IR/implementation/text/rapport.tex" 1778341529.10567 29805 d1e1fdd6fa2f628f2024b4e60c1fad1c ""
   "/usr/share/texlive/texmf-dist/dvips/pst-tools/pst-tools.pro" 1632691628 8227 6f74f061e0659e2d4a1eaab0a273b6e8 ""
   "/usr/share/texlive/texmf-dist/dvips/pstricks/pst-algparser.pro" 1591734865 30047 8a855069b8c74fd47ffa0f2ee54eac87 ""
   "/usr/share/texlive/texmf-dist/dvips/pstricks/pstricks.pro" 1682884434 37460 062a8ec90ec6dcd831b11f90d3671504 ""
@@ -239,10 +239,14 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1778161789.43441 165051 331a4b0cc8c79ccd6b2fbd918be026fc ""
   "/var/lib/texmf/tex/generic/config/language.dat" 1778161789.67944 3130 154e48c83201984f72bef83e7b630ea9 ""
   "/var/lib/texmf/web2c/luahbtex/lualatex.fmt" 1778161805 12241874 cddebae77ef8b44e6f9c31873ce8cb54 ""
+  "img/ig2.png" 1778335581.01789 187527 c9e8c71c052b235bf247ed8ee5508079 ""
+  "img/ig5.png" 1778335681.55273 215939 bbd409a4bad5abab71b626a60cd016c1 ""
+  "img/occ1.png" 1778338561.12463 228136 b1b77f3f39407e69de8a8671a8d953fd ""
+  "img/occ2.png" 1778339068.82557 175829 ef983d3239900df9c1718a8fe4fb48fc ""
   "ir.cls" 1777147190.82842 4737 3c482dfba8a8049a70e09310a9538d45 ""
-  "rapport.aux" 1778274264.93301 4031 a1ac93b12a8235d57b643ad5e6ba911a "lualatex"
-  "rapport.bbl" 1778273974.11354 2093 f39f290089df32334b22e52e1d5c5e06 "bibtex rapport"
-  "rapport.tex" 1778274264.20601 22475 b0e7f2bff9921ce478a5b05bcc64f52d ""
+  "rapport.aux" 1778341529.98767 4428 5410f2637ac13e50f72befe29222f5ba "lualatex"
+  "rapport.bbl" 1778341423.48388 2093 f39f290089df32334b22e52e1d5c5e06 "bibtex rapport"
+  "rapport.tex" 1778341529.10567 29805 d1e1fdd6fa2f628f2024b4e60c1fad1c ""
   (generated)
   "rapport.aux"
   "rapport.log"

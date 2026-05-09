@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023/Debian)  (format=lualatex 2026.5.7)  8 MAY 2026 23:04
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023/Debian)  (format=lualatex 2026.5.7)  9 MAY 2026 17:45
  restricted system commands enabled.
 **/home/hugo/Documents/uni/IR/implementation/text/rapport.tex
 (/home/hugo/Documents/uni/IR/implementation/text/rapport.tex
@@ -887,77 +887,130 @@ Underfull \hbox (badness 10000) in paragraph at lines 262--265
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 271--273
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 307--308
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--324
+Underfull \hbox (badness 10000) in paragraph at lines 320--321
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--332
+Underfull \hbox (badness 10000) in paragraph at lines 336--337
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--343
+Underfull \hbox (badness 10000) in paragraph at lines 344--345
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 349--350
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--366
+Underfull \hbox (badness 10000) in paragraph at lines 362--363
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--385
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 389--390
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 391--392
+Underfull \hbox (badness 10000) in paragraph at lines 402--403
 
  []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 404--405
+
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 416--417
+Underfull \hbox (badness 10000) in paragraph at lines 429--430
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
+Underfull \hbox (badness 10000) in paragraph at lines 431--432
 
  []
 
-(./rapport.bbl [10])
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 44
-2.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+
+Overfull \hbox (2.77281pt too wide) in paragraph at lines 437--441
+[]\T1/ptm/m/n/10 Les mé-thodes d'at-tri-bu-tions pré-sentent plu-sieurs avan-t
+ages. Elles sont gé-né-ra-le-ment simples
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 455--457
+
+ []
+
+<img/ig2.png, id=47, 455.7025pt x 454.69875pt>
+File: img/ig2.png Graphic file (type png)
+<use img/ig2.png>
+Package luatex.def Info: img/ig2.png  used on input line 459.
+(luatex.def)             Requested size: 187.78813pt x 187.3782pt.
+<img/ig5.png, id=48, 451.6875pt x 451.6875pt>
+File: img/ig5.png Graphic file (type png)
+<use img/ig5.png>
+Package luatex.def Info: img/ig5.png  used on input line 460.
+(luatex.def)             Requested size: 187.78813pt x 187.79141pt.
+
+Overfull \hbox (1.90001pt too wide) in paragraph at lines 459--461
+[][] [] 
+ []
+
+[11<./img/ig2.png><./img/ig5.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 500--502
+
+ []
+
+<img/occ1.png, id=53, 454.69875pt x 454.69875pt>
+File: img/occ1.png Graphic file (type png)
+<use img/occ1.png>
+Package luatex.def Info: img/occ1.png  used on input line 504.
+(luatex.def)             Requested size: 187.78813pt x 187.78757pt.
+<img/occ2.png, id=54, 452.69125pt x 453.695pt>
+File: img/occ2.png Graphic file (type png)
+<use img/occ2.png>
+Package luatex.def Info: img/occ2.png  used on input line 505.
+(luatex.def)             Requested size: 187.78813pt x 188.20377pt.
+
+Overfull \hbox (1.90001pt too wide) in paragraph at lines 504--506
+[][] [] 
+ []
+
+
+Underfull \vbox (badness 2318) has occurred while \output is active []
+
+ [12<./img/occ1.png><./img/occ2.png>] (./rapport.bbl)
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 53
+8.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-[11] (./rapport.aux)
+) [13] [14]
+(./rapport.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -965,15 +1018,15 @@ L3 programming layer <2024-01-22>
 )
 
 Here is how much of LuaTeX's memory you used:
- 16378 strings out of 476553
+ 16423 strings out of 476553
  100000,1977958 words of node,token memory allocated
- 3153 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 141 glue, 4 kern, 1 penalty, 2 glyph, 679 attribute
-, 81 glue_spec, 99 attribute_list, 1 write nodes
-   avail lists: 2:1755,3:226,4:44,5:235,6:59,7:7301,8:65,9:461,10:12,11:685
- 37906 multiletter control sequences out of 65536+600000
+ 3273 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 149 glue, 4 kern, 1 penalty, 2 glyph, 707 attribute
+, 81 glue_spec, 103 attribute_list, 1 write nodes
+   avail lists: 2:1859,3:206,4:48,5:244,6:59,7:7293,8:65,9:433,10:12,11:685
+ 37939 multiletter control sequences out of 65536+600000
  83 fonts using 5210343 bytes
- 90i,12n,88p,558b,376s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,12n,88p,558b,354s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/font
@@ -989,10 +1042,10 @@ st/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
 rw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on rapport.pdf (11 pages, 180671 bytes).
+Output written on rapport.pdf (14 pages, 1475305 bytes).
 
-PDF statistics: 105 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
+PDF statistics: 118 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 
