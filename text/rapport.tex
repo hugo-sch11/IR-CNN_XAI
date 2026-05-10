@@ -24,7 +24,7 @@
 
 \resume{Ce document va traité de l'explicabilité pour les réseaux de neurones convolutifs.}
 
-\motcle{Explicabilité réseaux de neurones convolutifs, Explicabilité CNN, XAI CNN}
+\motcle{Explicabilité réseaux neurones convolutifs, Explicabilité CNN, XAI CNN}
 
 \begin{document}
 
@@ -47,7 +47,9 @@ Par exemple, lorsqu'un modèle détecte un cancer sur une image médicale ou ide
 
 Dans ce contexte, le domaine de l'Explainable Artificial Intelligence (XAI), ou intelligence artificielle explicable, vise à développer des méthodes permettant de mieux comprendre les décisions des modèles d'apprentissage profond.
 
-L'objectif de ce document est de présenter plusieurs familles d'approches d'explicabilité post-hoc appliquables aux réseaux de neurones convolutifs, notamment les méthodes par attribution (gradients), par perturbation et par analyse des activations internes. Ces méthodes seront illustrés visuellement, puis analysées et comparées afin d'évaluer leurs apports, leurs limites et leur pertinence. Et plus généralement, comment juger de la qualité d'une explication ?
+L'objectif de ce document est de présenter plusieurs familles d'approches d'explicabilité post-hoc appliquables aux réseaux de neurones convolutifs, notamment les méthodes par attribution (gradients), par perturbation et par analyse des activations internes.
+Ces méthodes seront illustrés visuellement, puis analysées et comparées afin d'évaluer leurs apports, leurs limites et leur pertinence.
+Et plus généralement, comment juger de la qualité d'une explication ?
 
 
 \section{Contexte et état de l'art}\label{sec:contexte_sota}
@@ -79,15 +81,15 @@ L'explicabilité d'un modèle d'intelligence artificielle signifie : présenter 
 
 Tandis qu'un autre terme qui apparait souvent et s'en approche, l'interprétabilité, qui signifie : la capacité d'expliquer ou de présenter à un humain des éléments dans des termes compréhensibles.
 
-La distinction entre ces deux termes constitue une problématique à part, ici nous ne ferons pas de distinction, comme dans cet article \cite{cao25slre}.
+La distinction entre ces deux termes constitue une problématique à part, ici nous ne ferons pas de distinction, comme dans l'article \cite{cao25slre}.
 
 \subsection{Les métriques d'explicabilité}\label{subsec:metriques}
 
 L'explicabilité des modèles d'apprentissage profond, et notamment des réseaux de neurones convolutifs (CNN), la qualité d'une explication est généralement étudiée selon deux approches complémentaires : une approche théorique fondée sur des axiomes, et une approche empirique basée sur des métriques d'évaluation.
 
-Les travaux fondateurs comme \cite{sundararajan17axiomatic_attribution} ont introduit plusieurs propriétés mathématiques qu'une méthode d'explication devrait respecter, telles que la sensibilité (Sensitivity) ou l'invariance d'implémentation (Implementation Invariance). Ces axiomes visent à garantir la cohérence des méthodes d'attribution.
+Les travaux fondateurs comme \cite{sundararajan2017axiomatic} ont introduit plusieurs propriétés mathématiques qu'une méthode d'explication devrait respecter, telles que la sensibilité (Sensitivity) ou l'invariance d'implémentation (Implementation Invariance). Ces axiomes visent à garantir la cohérence des méthodes d'attribution.
 
-Cependant, la recherche récente montre que le respect de ces propriétés ne suffit pas à garantir une explication réellement utile ou pertinente pour l'utilisateur.
+Cependant, la recherche récente montre que le respect de ces propriétés ne suffit pas à garantir une explication réellement utile ou pertinente pour l'utilisateur \cite{nauta2022xai}.
 
 Ainsi, l'évaluation moderne de l'explicabilité repose également sur des métriques empiriques telles que la fidélité (faithfulness), la robustesse, la stabilité ou encore la simplicité des explications.
 
@@ -102,7 +104,7 @@ En ce qui concerne le panorama des approches existantes, on peut les classer con
 De plus, on peut les catégoriser par des familles de méthodes, comment elles produisent l'explication : méthodes par perturbation, méthodes par attributions et méthodes basées sur les activations.
 
 On peut projeter des familles sur des critères, les méthodes d'attributions sont souvent locales et a posteriori, les méthodes par perturbation sont généralement agnostiques et les méthodes basées sur les activations sont souvent spécifique au modèle.
-Cette liste n'est pas exhaustive mais présente "l'essentiel", il existe d'autres familles et sous-familles de méthodes d'explicabilité.
+Cette liste n'est pas exhaustive, il existe beaucoup d'autres familles et sous-familles de méthodes d'explicabilité \cite{Kadir2023XAIEvaluation}.
 
 
 \section{Les méthodes d'explicabilité}\label{sec.methodesexplicabilite}
@@ -346,7 +348,7 @@ Cette propriété indique que la somme des contributions attribuées aux entrée
 Intuitivement, la méthode mesure la contribution totale de chaque entrée le long du chemin reliant la baseline à l'entrée étudiée, plutôt que d'évaluer uniquement une sensibilité locale en un point donné.
 
 Cette approche permet notamment de réduire les problèmes de saturation du gradient, pouvant apparaître avec certaines fonctions d'activation, et fournit des explications généralement plus stables que les méthodes reposant uniquement sur le gradient local.\\
-\cite{sundararajan17axiomatic_attribution}
+\cite{sundararajan2017axiomatic}
 
 \subsection{Occlusion}
 
@@ -443,7 +445,7 @@ Les méthodes basées sur les gradients peuvent aussi être sensibles à la satu
 Les gradients intégrés atténuent ce problème grâce à l'intégration le long du chemin entre $x$ et $x'$ (section \ref{subsec:ig}), au prix d'un temps de calcul plus élevé.
 
 Le choix des hyperparamètres reste important, notamment la baseline et le nombre de pas $m$ (section \ref{subsec:ig}), qui influencent fortement les résultats.
-Dans \cite{sundararajan17axiomatic_attribution}, les auteurs recommandent une baseline nulle ou générée aléatoirement à partir de l'image, ainsi qu'entre 20 et 300 pas pour obtenir une approximation satisfaisante de l'intégrale.
+Dans \cite{sundararajan2017axiomatic}, les auteurs recommandent une baseline nulle ou générée aléatoirement à partir de l'image, ainsi qu'entre 20 et 300 pas pour obtenir une approximation satisfaisante de l'intégrale.
 
 Enfin, ces méthodes fournissent principalement une explicabilité locale : elles justifient une prédiction pour une image donnée, mais permettent difficilement de comprendre le comportement global du modèle ou les concepts abstraits appris par le réseau.
 
@@ -545,10 +547,18 @@ Grad-CAM  & faible à moyenne & faible & faible & élevée \\
 \section{Conclusion}
 
 Le document doit se terminer par une conclusion.
-%%
+%% Conclusion
 % METHODES D'EXPLICABILITÉ != COMPORTEMENT GLOBAL
-% Elle permet d'interpréter une prédiction particulière mais ne permet pas directement de comprendre les concepts globaux appris par le modèle ou les éventuels biais présents dans les données d'entraînement.
-% Elle permet de comprendre quelles régions influencent une prédiction particulière, mais reste limitée pour analyser le comportement global du modèle ou les représentations internes apprises par le réseau.
+% Les méthodes abordées permettent d'interpréter une prédiction particulière mais ne permettent pas directement de comprendre les concepts globaux appris par le modèle ou les éventuels biais présents dans les données d'entraînement.
+% LE DOMAINE XAI EST EN PLEINE EXPANSION, C'EST UN CHAMP TRÈS (TRÈS) VASTE
+% Cette article traite de trois méthodes de familles différentes...
+% Les méthodes en elles-mêmes sont développés en respectant certains critères mathématiques fondamentaux (axiomes).
+% Mais l'explicabilité qu'elles produisent est mesurable sur des critères plus humains.
+% Au final, combiner différentes méthodes donne de la complémentarité à l'explication...
+%
+% Exemple vite fait :
+% Les méthodes d'explicabilité présentées permettent principalement d'interpréter des prédictions individuelles produites par un modèle. Cependant, elles ne suffisent pas nécessairement à comprendre le comportement global du modèle, ni les biais potentiellement présents dans les données d'entraînement. Le domaine de l'Explainable Artificial Intelligence (XAI) constitue aujourd'hui un champ de recherche particulièrement vaste et en constante évolution. Cet article s'est concentré sur trois méthodes appartenant à des familles différentes afin d'illustrer plusieurs approches possibles de l'explicabilité des modèles de deep learning. Ces méthodes reposent sur des fondements mathématiques rigoureux, notamment à travers le respect de certains axiomes d'attribution. Néanmoins, la qualité des explications produites ne peut pas être évaluée uniquement par des critères mathématiques : elle dépend également de facteurs plus humains, tels que l'interprétabilité, la compréhension ou la confiance accordée par l'utilisateur. Enfin, aucune méthode ne fournit à elle seule une explication parfaitement complète du fonctionnement d'un modèle. La combinaison de plusieurs approches apparaît donc comme une solution pertinente afin d'obtenir des explications plus complémentaires et plus robustes.
+% + ouverture sur d'autres méthodes ...
 
 \remerciement{
 %Un court paragraphe peut-être utilisé à la fin pour les remerciements.
