@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023/Debian)  (format=lualatex 2026.5.7)  10 MAY 2026 12:32
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023/Debian)  (format=lualatex 2026.5.7)  10 MAY 2026 15:25
  restricted system commands enabled.
 **/home/hugo/Documents/uni/IR/implementation/text/rapport.tex
 (/home/hugo/Documents/uni/IR/implementation/text/rapport.tex
@@ -797,72 +797,63 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--68
 
 Missing character: There is no “ (U+201C) in font ptmr8t!
 Missing character: There is no ” (U+201D) in font ptmr8t!
-] [3
+]
+Overfull \hbox (38.05067pt too wide) in paragraph at lines 88--90
+[]\T1/ptm/m/n/10 Cette dis-tinc-tion, bien que théo-ri-que-ment utile, reste d
+é-bat-tue dans la com-mu-nauté [[]].
+ []
+
+[3
 Missing character: There is no “ (U+201C) in font ptmr8t!
 Missing character: There is no ” (U+201D) in font ptmr8t!
 ]
-Overfull \hbox (3.12021pt too wide) in paragraph at lines 135--136
+Overfull \hbox (3.12021pt too wide) in paragraph at lines 142--143
 []\T1/ptm/m/n/10 Les mé-thodes d'at-tri-bu-tions visent à quan-ti-fier la cont
 ri-bu-tion de chaque en-trée (par exemple
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--140
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 160--161
+Underfull \hbox (badness 10000) in paragraph at lines 146--147
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 165--167
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 174--175
+Underfull \hbox (badness 10000) in paragraph at lines 170--172
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--184
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--195
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 205--206
+Underfull \hbox (badness 10000) in paragraph at lines 208--209
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--219
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 215--216
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 217--220
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
+Underfull \hbox (badness 10000) in paragraph at lines 220--223
 
  []
 
@@ -872,252 +863,252 @@ Underfull \hbox (badness 10000) in paragraph at lines 234--235
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 236--237
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 261--262
+Underfull \hbox (badness 10000) in paragraph at lines 264--265
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 264--267
+Underfull \hbox (badness 10000) in paragraph at lines 267--270
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 286--287
+Underfull \hbox (badness 10000) in paragraph at lines 290--291
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 302--303
+Underfull \hbox (badness 10000) in paragraph at lines 306--307
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 322--323
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 338--339
+Underfull \hbox (badness 10000) in paragraph at lines 342--343
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 346--347
+Underfull \hbox (badness 10000) in paragraph at lines 350--351
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
+Underfull \hbox (badness 10000) in paragraph at lines 377--378
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--365
+Underfull \hbox (badness 10000) in paragraph at lines 393--394
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--381
+Underfull \hbox (badness 10000) in paragraph at lines 412--413
 
  []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 399--400
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 404--405
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 406--407
-
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 432--433
+Underfull \hbox (badness 10000) in paragraph at lines 418--419
 
  []
 
-<img/ig2.png, id=43, 455.7025pt x 454.69875pt>
-File: img/ig2.png Graphic file (type png)
-<use img/ig2.png>
-Package luatex.def Info: img/ig2.png  used on input line 453.
-(luatex.def)             Requested size: 187.78813pt x 187.3782pt.
-<img/ig5.png, id=44, 451.6875pt x 451.6875pt>
-File: img/ig5.png Graphic file (type png)
-<use img/ig5.png>
-Package luatex.def Info: img/ig5.png  used on input line 454.
-(luatex.def)             Requested size: 187.78813pt x 187.79141pt.
 
-Overfull \hbox (1.90001pt too wide) in paragraph at lines 453--455
-[][] [] 
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
+
  []
 
 [10
 Missing character: There is no œ (U+0153) in font ptmr8t!
 ]
-<img/occ1.png, id=49, 454.69875pt x 454.69875pt>
-File: img/occ1.png Graphic file (type png)
-<use img/occ1.png>
-Package luatex.def Info: img/occ1.png  used on input line 485.
-(luatex.def)             Requested size: 187.78813pt x 187.78757pt.
-<img/occ2.png, id=50, 452.69125pt x 453.695pt>
-File: img/occ2.png Graphic file (type png)
-<use img/occ2.png>
-Package luatex.def Info: img/occ2.png  used on input line 486.
-(luatex.def)             Requested size: 187.78813pt x 188.20377pt.
+<img/ig2.png, id=47, 455.7025pt x 454.69875pt>
+File: img/ig2.png Graphic file (type png)
+<use img/ig2.png>
+Package luatex.def Info: img/ig2.png  used on input line 468.
+(luatex.def)             Requested size: 187.78813pt x 187.3782pt.
+<img/ig5.png, id=48, 451.6875pt x 451.6875pt>
+File: img/ig5.png Graphic file (type png)
+<use img/ig5.png>
+Package luatex.def Info: img/ig5.png  used on input line 469.
+(luatex.def)             Requested size: 187.78813pt x 187.79141pt.
 
-Overfull \hbox (1.90001pt too wide) in paragraph at lines 485--487
+Overfull \hbox (1.90001pt too wide) in paragraph at lines 468--470
 [][] [] 
  []
 
 [11<./img/ig2.png><./img/ig5.png>]
-<img/gc1.png, id=55, 453.695pt x 453.695pt>
-File: img/gc1.png Graphic file (type png)
-<use img/gc1.png>
-Package luatex.def Info: img/gc1.png  used on input line 514.
-(luatex.def)             Requested size: 187.78813pt x 187.78839pt.
-<img/gc2.png, id=56, 454.69875pt x 452.69125pt>
-File: img/gc2.png Graphic file (type png)
-<use img/gc2.png>
-Package luatex.def Info: img/gc2.png  used on input line 515.
-(luatex.def)             Requested size: 187.78813pt x 186.95848pt.
+<img/occ1.png, id=53, 454.69875pt x 454.69875pt>
+File: img/occ1.png Graphic file (type png)
+<use img/occ1.png>
+Package luatex.def Info: img/occ1.png  used on input line 500.
+(luatex.def)             Requested size: 187.78813pt x 187.78757pt.
+<img/occ2.png, id=54, 452.69125pt x 453.695pt>
+File: img/occ2.png Graphic file (type png)
+<use img/occ2.png>
+Package luatex.def Info: img/occ2.png  used on input line 501.
+(luatex.def)             Requested size: 187.78813pt x 188.20377pt.
 
-Overfull \hbox (1.90001pt too wide) in paragraph at lines 514--516
+Overfull \hbox (1.90001pt too wide) in paragraph at lines 500--502
 [][] [] 
  []
 
 [12<./img/occ1.png><./img/occ2.png>]
-Overfull \hbox (3.88998pt too wide) in paragraph at lines 531--542
+<img/gc1.png, id=58, 453.695pt x 453.695pt>
+File: img/gc1.png Graphic file (type png)
+<use img/gc1.png>
+Package luatex.def Info: img/gc1.png  used on input line 529.
+(luatex.def)             Requested size: 187.78813pt x 187.78839pt.
+<img/gc2.png, id=59, 454.69875pt x 452.69125pt>
+File: img/gc2.png Graphic file (type png)
+<use img/gc2.png>
+Package luatex.def Info: img/gc2.png  used on input line 530.
+(luatex.def)             Requested size: 187.78813pt x 186.95848pt.
+
+Overfull \hbox (1.90001pt too wide) in paragraph at lines 529--531
+[][] [] 
+ []
+
+
+Overfull \hbox (3.88998pt too wide) in paragraph at lines 546--557
  [][] 
  []
 
-(./rapport.bbl [13<./img/gc1.png><./img/gc2.png>])
-<img/multiplex1.png, id=63, 974.64125pt x 988.69376pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13<./img/gc1.png><./img/gc2.png>] (./rapport.bbl [14
+Missing character: There is no ’ (U+2019) in font ptmr8t!
+])
+<img/multiplex1.png, id=66, 974.64125pt x 988.69376pt>
 File: img/multiplex1.png Graphic file (type png)
 <use img/multiplex1.png>
-Package luatex.def Info: img/multiplex1.png  used on input line 582.
+Package luatex.def Info: img/multiplex1.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 380.98772pt.
-<img/multiplex2.png, id=64, 967.615pt x 979.66pt>
+<img/multiplex2.png, id=67, 967.615pt x 979.66pt>
 File: img/multiplex2.png Graphic file (type png)
 <use img/multiplex2.png>
-Package luatex.def Info: img/multiplex2.png  used on input line 582.
+Package luatex.def Info: img/multiplex2.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 380.25711pt.
-<img/multiplex3.png, id=65, 963.6pt x 982.67125pt>
+<img/multiplex3.png, id=68, 963.6pt x 982.67125pt>
 File: img/multiplex3.png Graphic file (type png)
 <use img/multiplex3.png>
-Package luatex.def Info: img/multiplex3.png  used on input line 582.
+Package luatex.def Info: img/multiplex3.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 383.00034pt.
-<img/multiplex4.png, id=66, 962.59625pt x 979.66pt>
+<img/multiplex4.png, id=69, 962.59625pt x 979.66pt>
 File: img/multiplex4.png Graphic file (type png)
 <use img/multiplex4.png>
-Package luatex.def Info: img/multiplex4.png  used on input line 582.
+Package luatex.def Info: img/multiplex4.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 382.2303pt.
-<img/multiplex5.png, id=67, 956.57375pt x 974.64125pt>
+<img/multiplex5.png, id=70, 956.57375pt x 974.64125pt>
 File: img/multiplex5.png Graphic file (type png)
 <use img/multiplex5.png>
-Package luatex.def Info: img/multiplex5.png  used on input line 582.
+Package luatex.def Info: img/multiplex5.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 382.6665pt.
-<img/multiplex6.png, id=68, 964.60374pt x 975.645pt>
+<img/multiplex6.png, id=71, 964.60374pt x 975.645pt>
 File: img/multiplex6.png Graphic file (type png)
 <use img/multiplex6.png>
-Package luatex.def Info: img/multiplex6.png  used on input line 582.
+Package luatex.def Info: img/multiplex6.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 379.87476pt.
-<img/multiplex7.png, id=69, 963.6pt x 980.66376pt>
+<img/multiplex7.png, id=72, 963.6pt x 980.66376pt>
 File: img/multiplex7.png Graphic file (type png)
 <use img/multiplex7.png>
-Package luatex.def Info: img/multiplex7.png  used on input line 582.
+Package luatex.def Info: img/multiplex7.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 382.21791pt.
-<img/multiplex8.png, id=70, 962.59625pt x 975.645pt>
+<img/multiplex8.png, id=73, 962.59625pt x 975.645pt>
 File: img/multiplex8.png Graphic file (type png)
 <use img/multiplex8.png>
-Package luatex.def Info: img/multiplex8.png  used on input line 582.
+Package luatex.def Info: img/multiplex8.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 380.66377pt.
-<img/multiplex9.png, id=71, 963.6pt x 976.64874pt>
+<img/multiplex9.png, id=74, 963.6pt x 976.64874pt>
 File: img/multiplex9.png Graphic file (type png)
 <use img/multiplex9.png>
-Package luatex.def Info: img/multiplex9.png  used on input line 582.
+Package luatex.def Info: img/multiplex9.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 380.65305pt.
-<img/multiplex10.png, id=72, 959.585pt x 976.64874pt>
+<img/multiplex10.png, id=75, 959.585pt x 976.64874pt>
 File: img/multiplex10.png Graphic file (type png)
 <use img/multiplex10.png>
-Package luatex.def Info: img/multiplex10.png  used on input line 582.
+Package luatex.def Info: img/multiplex10.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 382.2625pt.
-<img/multiplex11.png, id=73, 958.58125pt x 974.64125pt>
+<img/multiplex11.png, id=76, 958.58125pt x 974.64125pt>
 File: img/multiplex11.png Graphic file (type png)
 <use img/multiplex11.png>
-Package luatex.def Info: img/multiplex11.png  used on input line 582.
+Package luatex.def Info: img/multiplex11.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 381.86343pt.
-<img/multiplex12.png, id=74, 966.61125pt x 976.64874pt>
+<img/multiplex12.png, id=77, 966.61125pt x 976.64874pt>
 File: img/multiplex12.png Graphic file (type png)
 <use img/multiplex12.png>
-Package luatex.def Info: img/multiplex12.png  used on input line 582.
+Package luatex.def Info: img/multiplex12.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 379.47574pt.
-<img/multiplex13.png, id=75, 959.585pt x 974.64125pt>
+<img/multiplex13.png, id=78, 959.585pt x 974.64125pt>
 File: img/multiplex13.png Graphic file (type png)
 <use img/multiplex13.png>
-Package luatex.def Info: img/multiplex13.png  used on input line 582.
+Package luatex.def Info: img/multiplex13.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 381.47676pt.
-<img/multiplex14.png, id=76, 947.54pt x 970.62625pt>
+<img/multiplex14.png, id=79, 947.54pt x 970.62625pt>
 File: img/multiplex14.png Graphic file (type png)
 <use img/multiplex14.png>
-Package luatex.def Info: img/multiplex14.png  used on input line 582.
+Package luatex.def Info: img/multiplex14.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 384.71872pt.
-<img/multiplex15.png, id=77, 960.58875pt x 979.66pt>
+<img/multiplex15.png, id=80, 960.58875pt x 979.66pt>
 File: img/multiplex15.png Graphic file (type png)
 <use img/multiplex15.png>
-Package luatex.def Info: img/multiplex15.png  used on input line 582.
+Package luatex.def Info: img/multiplex15.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 383.0375pt.
-<img/multiplex16.png, id=78, 957.5775pt x 975.645pt>
+<img/multiplex16.png, id=81, 957.5775pt x 975.645pt>
 File: img/multiplex16.png Graphic file (type png)
 <use img/multiplex16.png>
-Package luatex.def Info: img/multiplex16.png  used on input line 582.
+Package luatex.def Info: img/multiplex16.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 382.65866pt.
-<img/multiplex17.png, id=79, 957.5775pt x 975.645pt>
+<img/multiplex17.png, id=82, 957.5775pt x 975.645pt>
 File: img/multiplex17.png Graphic file (type png)
 <use img/multiplex17.png>
-Package luatex.def Info: img/multiplex17.png  used on input line 582.
+Package luatex.def Info: img/multiplex17.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 382.65866pt.
-<img/multiplex18.png, id=80, 958.58125pt x 971.63pt>
+<img/multiplex18.png, id=83, 958.58125pt x 971.63pt>
 File: img/multiplex18.png Graphic file (type png)
 <use img/multiplex18.png>
-Package luatex.def Info: img/multiplex18.png  used on input line 582.
+Package luatex.def Info: img/multiplex18.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 380.68362pt.
-<img/multiplex19.png, id=81, 960.58875pt x 978.65625pt>
+<img/multiplex19.png, id=84, 960.58875pt x 978.65625pt>
 File: img/multiplex19.png Graphic file (type png)
 <use img/multiplex19.png>
-Package luatex.def Info: img/multiplex19.png  used on input line 582.
+Package luatex.def Info: img/multiplex19.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 382.64505pt.
-<img/multiplex20.png, id=82, 958.58125pt x 974.64125pt>
+<img/multiplex20.png, id=85, 958.58125pt x 974.64125pt>
 File: img/multiplex20.png Graphic file (type png)
 <use img/multiplex20.png>
-Package luatex.def Info: img/multiplex20.png  used on input line 582.
+Package luatex.def Info: img/multiplex20.png  used on input line 593.
 (luatex.def)             Requested size: 375.57628pt x 381.86343pt.
-<thumbnail.png, id=83, 902.37125pt x 936.49875pt>
+<thumbnail.png, id=86, 902.37125pt x 936.49875pt>
 File: thumbnail.png Graphic file (type png)
 <use thumbnail.png>
-Package luatex.def Info: thumbnail.png  used on input line 585.
+Package luatex.def Info: thumbnail.png  used on input line 596.
 (luatex.def)             Requested size: 375.57628pt x 389.78291pt.
- [14] [15<./img/multiplex1.png>] [16<./img/multiplex2.png>] [17<./img/multiplex3
-.png>] [18<./img/multiplex4.png>] [19<./img/multiplex5.png>] [20<./img/multiplex
-6.png>] [21<./img/multiplex7.png>] [22<./img/multiplex8.png>] [23<./img/multiple
-x9.png>] [24<./img/multiplex10.png>] [25<./img/multiplex11.png>] [26<./img/multi
-plex12.png>] [27<./img/multiplex13.png>] [28<./img/multiplex14.png>] [29<./img/m
-ultiplex15.png>]
-[30<./img/multiplex16.png>] [31<./img/multiplex17.png>] [32<./img/multiplex18.pn
-g>] [33<./img/multiplex19.png>] [34<./img/multiplex20.png>] [35<./thumbnail.png>
-] (./rapport.aux)
+ [15] [16<./img/multiplex1.png>] [17<./img/multiplex2.png>] [18<./img/multiplex3
+.png>] [19<./img/multiplex4.png>] [20<./img/multiplex5.png>] [21<./img/multiplex
+6.png>] [22<./img/multiplex7.png>] [23<./img/multiplex8.png>] [24<./img/multiple
+x9.png>] [25<./img/multiplex10.png>] [26<./img/multiplex11.png>] [27<./img/multi
+plex12.png>] [28<./img/multiplex13.png>] [29<./img/multiplex14.png>]
+[30<./img/multiplex15.png>] [31<./img/multiplex16.png>] [32<./img/multiplex17.pn
+g>] [33<./img/multiplex18.png>] [34<./img/multiplex19.png>] [35<./img/multiplex2
+0.png>] [36<./thumbnail.png>] (./rapport.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -1125,15 +1116,15 @@ L3 programming layer <2024-01-22>
 )
 
 Here is how much of LuaTeX's memory you used:
- 16606 strings out of 476553
+ 16608 strings out of 476553
  100000,1977958 words of node,token memory allocated
- 4116 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 202 glue, 4 kern, 1 penalty, 2 glyph, 909 attribute
-, 83 glue_spec, 132 attribute_list, 1 write nodes
-   avail lists: 2:4916,3:414,4:132,5:309,6:80,7:7238,8:65,9:486,10:12,11:685
- 38059 multiletter control sequences out of 65536+600000
+ 4153 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 205 glue, 4 kern, 1 penalty, 2 glyph, 916 attribute
+, 83 glue_spec, 133 attribute_list, 1 write nodes
+   avail lists: 2:4828,3:396,4:132,5:299,6:78,7:7433,8:65,9:480,10:12,11:744
+ 38061 multiletter control sequences out of 65536+600000
  67 fonts using 4285559 bytes
- 90i,12n,88p,1397b,368s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,12n,88p,765b,380s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/font
@@ -1148,10 +1139,10 @@ texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/u
 tmri8a.pfb>
-Output written on rapport.pdf (35 pages, 27835899 bytes).
+Output written on rapport.pdf (36 pages, 27840270 bytes).
 
-PDF statistics: 199 PDF objects out of 1000 (max. 8388607)
- 119 compressed objects within 2 object streams
+PDF statistics: 202 PDF objects out of 1000 (max. 8388607)
+ 121 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 

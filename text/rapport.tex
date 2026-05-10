@@ -37,9 +37,9 @@ Les réseaux de neurones convolutifs (CNN) se sont imposés comme une référenc
 Grâce à leurs performances remarquables, ils sont aujourd'hui utilisés dans de nombreux domaines tels que la médecine, la sécurité, l'industrie ou encore les véhicules autonomes.
 
 Cependant, malgré leur efficacité, ces intelligences artificielles demeurent souvent difficiles à interpréter.
-Leurs fonctionnement interne, fondé sur l'apprentissage de millions de paramètres, les fait souvent paraître comme des "boîtes noires".
+Leur fonctionnement interne, fondé sur l'apprentissage de millions de paramètres, les fait souvent paraître comme des "boîtes noires".
 
-Il devient alors difficile de comprendre sur quels élements un modèle s'appuie pour produire une prédiction.
+Il devient alors difficile de comprendre sur quels éléments un modèle s'appuie pour produire une prédiction.
 Cette absence de transparence soulève plusieurs enjeux majeurs.
 Elle peut limiter la confiance des utilisateurs, compliquer la détection d'erreurs ou de biais, et poser des problèmes éthiques ou réglementaires, en particulier dans des contextes sensibles.
 
@@ -47,8 +47,8 @@ Par exemple, lorsqu'un modèle détecte un cancer sur une image médicale ou ide
 
 Dans ce contexte, le domaine de l'Explainable Artificial Intelligence (XAI), ou intelligence artificielle explicable, vise à développer des méthodes permettant de mieux comprendre les décisions des modèles d'apprentissage profond.
 
-L'objectif de ce document est de présenter plusieurs familles d'approches d'explicabilité post-hoc appliquables aux réseaux de neurones convolutifs, notamment les méthodes par attribution (gradients), par perturbation et par analyse des activations internes.
-Ces méthodes seront illustrés visuellement, puis analysées et comparées afin d'évaluer leurs apports, leurs limites et leur pertinence.
+L'objectif de ce document est de présenter plusieurs familles d'approches d'explicabilité post-hoc applicables aux réseaux de neurones convolutifs, notamment les méthodes par attribution (gradients), par perturbation et par analyse des activations internes.
+Ces méthodes seront illustrées visuellement, puis analysées et comparées afin d'évaluer leurs apports, leurs limites et leur pertinence.
 Et plus généralement, comment juger de la qualité d'une explication ?
 
 
@@ -77,15 +77,22 @@ Au fur et à mesure des couches, le réseau apprend des caractéristiques de plu
 
 \subsection{L'explicabilité}
 
-L'explicabilité d'un modèle d'intelligence artificielle signifie : présenter à l'utilisateur le comportement du modèle facilement compréhensible, depuis la requête de l'utilisateur, en passant par les connaissances et les inférences de l'IA, jusqu'au comportement résultant.
+La littérature distingue généralement ces deux notions de la façon suivante.
 
-Tandis qu'un autre terme qui apparait souvent et s'en approche, l'interprétabilité, qui signifie : la capacité d'expliquer ou de présenter à un humain des éléments dans des termes compréhensibles.
+L'interprétabilité désigne une propriété intrinsèque d'un modèle : un modèle est dit interprétable si son fonctionnement peut être compris directement, sans recours à des outils externes.
+C'est typiquement le cas d'un arbre de décision ou d'une régression linéaire, dont les paramètres ont une signification directe.
 
-La distinction entre ces deux termes constitue une problématique à part, ici nous ne ferons pas de distinction, comme dans l'article \cite{cao25slre}.
+L'explicabilité, en revanche, est un processus a posteriori : elle consiste à produire, pour un modèle donné (potentiellement opaque), une représentation compréhensible de sa décision.
+Les CNN appartiennent à cette seconde catégorie, ils ne sont pas interprétables par nature, et c'est précisément pour cela que des méthodes d'explicabilité post-hoc comme celles étudiées ici sont nécessaires.
+
+Cette distinction, bien que théoriquement utile, reste débattue dans la communauté \cite{cao25slre}.
+Certains auteurs traitent les deux termes comme synonymes, d'autres les hiérarchisent.
+
+Dans ce document, nous adoptons une position pragmatique et ne faisons pas de distinction formelle entre les deux, en nous concentrant sur l'objectif commun : rendre les décisions du modèle compréhensibles pour un humain.
 
 \subsection{Les métriques d'explicabilité}\label{subsec:metriques}
 
-L'explicabilité des modèles d'apprentissage profond, et notamment des réseaux de neurones convolutifs (CNN), la qualité d'une explication est généralement étudiée selon deux approches complémentaires : une approche théorique fondée sur des axiomes, et une approche empirique basée sur des métriques d'évaluation.
+Dans le domaine de l'explicabilité des modèles d'apprentissage profond, et notamment des réseaux de neurones convolutifs, la qualité d'une explication est généralement étudiée selon deux approches complémentaires : une approche théorique fondée sur des axiomes, et une approche empirique basée sur des métriques d'évaluation.
 
 Les travaux fondateurs comme \cite{sundararajan2017axiomatic} ont introduit plusieurs propriétés mathématiques qu'une méthode d'explication devrait respecter, telles que la sensibilité (Sensitivity) ou l'invariance d'implémentation (Implementation Invariance). Ces axiomes visent à garantir la cohérence des méthodes d'attribution.
 
@@ -111,11 +118,11 @@ Cette liste n'est pas exhaustive, il existe beaucoup d'autres familles et sous-f
 
 Maintenant nous allons discuter des méthodes d'explicabilité traitées pour mieux les comprendre.
 
-Comme expliqué dans la dernière section (\ref{subsec:approches_existantes}), les méthodes abordées font parties de trois familles distinctes, attribution, perturbation et activation, chacune avec ses avantages et ses inconvenients.
+Comme décrit dans la dernière section (\ref{subsec:approches_existantes}), les méthodes abordées font parties de trois familles distinctes, attribution, perturbation et activation, chacune avec ses avantages et ses inconvenients.
 
 \subsection*{Avant-propos}
 
-On a $f(x)$ la prédiction du modèle pour une image d'entrée $x$, avec :
+On note $f(x)$ la prédiction du modèle pour une image d'entrée $x$, avec :
 
 \begin{itemize}
     \item $f$ : la fonction du modèle
@@ -137,8 +144,6 @@ Les méthodes d'attributions visent à quantifier la contribution de chaque entr
 Elles cherchent à répondre à la question suivante : quelles parties de l'entrée ont le plus influencé la décision du CNN ?
 
 Ces méthodes reposent généralement sur le gradient de la sortie du modèle par rapport à l'entrée, c'est-à-dire sur la sensibilité de la prédiction aux variations des pixels de l'image.\\
-
-Soit : $f(x)$ la prédiction du modèle pour une image d'entrée $x$.\\
 
 Le gradient de la sortie du modèle par rapport à l'entrée est défini par :
 
@@ -180,8 +185,6 @@ Ces perturbations peuvent prendre différentes formes :
     \item le remplacement de pixels par une valeur neutre.\\
 \end{itemize}
 
-Soit : $f(x)$ la prédiction du modèle pour une image d'entrée $x$.\\
-
 On définit une perturbation appliquée à l'entrée par :
 \begin{equation}
 \tilde{x} = P(x, m)
@@ -208,7 +211,7 @@ où :
 Une valeur élevée de $\Delta f$ indique que la région perturbée contribue fortement à la prédiction du modèle.
 \cite{zeiler2014visualizing}
 
-\subsection{Les méthodes d'activations}
+\subsection{Les méthodes d'activations}\label{subsec:activation}
 
 Les méthodes d'activations exploitent les activations internes du réseau de neurones afin d'identifier les régions de l'entrée qui stimulent certaines parties du modèle.
 
@@ -272,7 +275,8 @@ Ce modèle, composé de dix-huit couches, repose sur le principe des connexions 
 % dataset 2
 En ce qui concerne les données, nous avons remplacé CIFAR-10 par Imagenette, un sous-ensemble du célèbre ImageNet \cite{deng09imagenet}.
 Imagenette propose des images de plus haute résolution et des classes visuellement plus riches (que CIFAR-10), ce qui le rend particulièrement adapté à l'étude de méthodes d'explicabilité.
-On a les classes suivantes :
+
+Imagenette contient les classes suivantes :
 \begin{itemize}
     \item tanche (poisson)
     \item lecteur de cassettes
@@ -292,7 +296,7 @@ Ce changement nous a permis d'obtenir des visualisations plus détaillées, qual
 
 \subsection{Les méthodes mises en oeuvre}
 
-Du côté des méthodes d'explicabilité choisis, nous avons choisis une méthode d'attribution (intégré), une méthode de perturbation, et une méthode d'activation.
+Du côté des méthodes d'explicabilité, nous avons choisi une méthode d'attribution (intégré), une méthode de perturbation, et une méthode d'activation.
 Nous allons présenter les méthodes mises en oeuvre et détailler ce qui changent par rapport aux formules générales de la section \ref{sec.methodesexplicabilite}.
 
 \subsection{Gradients Intégrés}\label{subsec:ig}
@@ -354,12 +358,21 @@ Cette approche permet notamment de réduire les problèmes de saturation du grad
 
 Occlusion est une méthode d'explicabilité appartenant à la famille des méthodes de perturbations présentée dans la section~\ref{subsec:perturbations}.
 
-Elle consiste à appliquer localement une perturbation sur différentes régions de l'image afin d'évaluer leur importance pour la prédiction du modèle.\\
+Concrètement, la méthode applique un masque de taille fixe qui se déplace progressivement sur l'image selon une fenêtre glissante (sliding window).
+À chaque position, la région masquée est remplacée par une valeur de référence (par exemple une valeur nulle ou moyenne), puis la prédiction du modèle est recalculée.
 
+L'importance d'une région est estimée à partir de la variation de confiance observée pour la classe étudiée.
+Une diminution importante de la probabilité après masquage indique que la région occultée joue un rôle significatif dans la décision du modèle.
+
+Contrairement aux méthodes basées sur les gradients, Occlusion ne nécessite pas l'accès aux dérivées internes du réseau.
+La méthode est donc relativement agnostique au modèle et peut être appliquée à différents types d'architectures.
+
+Cependant, cette approche nécessite un grand nombre d'inférences successives afin d'évaluer toutes les positions possibles du masque, ce qui entraîne un coût calculatoire élevé, notamment pour les images de grande résolution.\\
+\cite{zeiler2014visualizing}
 
 \subsection{Grad-CAM}\label{subsec:gc}
 
-Grad-CAM (Gradient-weighted Class Activation Mapping) est une méthode d'explicabilité basée sur les activations (\ref{subsec:gc}) et les gradients (\ref{subsec:attributions}).
+Grad-CAM (Gradient-weighted Class Activation Mapping) est une méthode d'explicabilité basée sur les activations (\ref{subsec:activation}) et les gradients (\ref{subsec:attributions}).
 
 Elle utilise les gradients de la sortie du modèle par rapport aux cartes d'activations d'une couche convolutionnelle afin d'estimer l'importance de chaque filtre.\\
 
@@ -400,10 +413,12 @@ où :
 \end{itemize}
 
 L'application de la fonction ReLU permet de ne conserver que les régions ayant une influence positive sur la classe prédite.
+Sans ReLU, les régions qui diminuent la probabilité de la classe prédite contribueraient négativement et pollueraient la carte, rendant l'interprétation visuellement ambiguë.
 
 Une valeur élevée dans $L^{(l)}$ indique que la région correspondante de l'image contribue fortement à la décision du modèle.\\
 
 La carte obtenue est ensuite redimensionnée à la taille de l'image d'entrée afin d'être visualisée sous forme de carte de chaleur superposée à l'image originale.\\
+\cite{selvaraju2017grad}
 
 \hrule
 
@@ -546,23 +561,19 @@ Grad-CAM  & faible à moyenne & faible & faible & élevée \\
 
 \section{Conclusion}
 
-Le document doit se terminer par une conclusion.
-%% Conclusion
-% METHODES D'EXPLICABILITÉ != COMPORTEMENT GLOBAL
-% Les méthodes abordées permettent d'interpréter une prédiction particulière mais ne permettent pas directement de comprendre les concepts globaux appris par le modèle ou les éventuels biais présents dans les données d'entraînement.
-% LE DOMAINE XAI EST EN PLEINE EXPANSION, C'EST UN CHAMP TRÈS (TRÈS) VASTE
-% Cette article traite de trois méthodes de familles différentes...
-% Les méthodes en elles-mêmes sont développés en respectant certains critères mathématiques fondamentaux (axiomes).
-% Mais l'explicabilité qu'elles produisent est mesurable sur des critères plus humains.
-% Au final, combiner différentes méthodes donne de la complémentarité à l'explication...
-%
-% Exemple vite fait :
-% Les méthodes d'explicabilité présentées permettent principalement d'interpréter des prédictions individuelles produites par un modèle. Cependant, elles ne suffisent pas nécessairement à comprendre le comportement global du modèle, ni les biais potentiellement présents dans les données d'entraînement. Le domaine de l'Explainable Artificial Intelligence (XAI) constitue aujourd'hui un champ de recherche particulièrement vaste et en constante évolution. Cet article s'est concentré sur trois méthodes appartenant à des familles différentes afin d'illustrer plusieurs approches possibles de l'explicabilité des modèles de deep learning. Ces méthodes reposent sur des fondements mathématiques rigoureux, notamment à travers le respect de certains axiomes d'attribution. Néanmoins, la qualité des explications produites ne peut pas être évaluée uniquement par des critères mathématiques : elle dépend également de facteurs plus humains, tels que l'interprétabilité, la compréhension ou la confiance accordée par l'utilisateur. Enfin, aucune méthode ne fournit à elle seule une explication parfaitement complète du fonctionnement d'un modèle. La combinaison de plusieurs approches apparaît donc comme une solution pertinente afin d'obtenir des explications plus complémentaires et plus robustes.
-% + ouverture sur d'autres méthodes ...
+Les expérimentations menées sur ResNet-18 entraîné sur Imagenette ont mis en évidence plusieurs enseignements concrets.
+
+Premièrement, la qualité du modèle sous-jacent conditionne directement la pertinence des explications. Le passage de LeNet sur CIFAR-10 (~70\% de précision, images 32×32) à ResNet-18 sur Imagenette (~95\%) a produit des visualisations qualitativement bien supérieures, ce qui suggère qu'une méthode d'explicabilité n'est pas totalement dissociable du modèle qu'elle cherche à expliquer.
+
+Deuxièmement, les trois méthodes étudiées ne répondent pas aux mêmes besoins. Les Gradients Intégrés offrent la précision spatiale la plus fine et des garanties axiomatiques solides, mais au prix d'une instabilité visuelle et d'une sensibilité importante au choix de la baseline. Occlusion produit des cartes plus lisses et plus intuitives, mais son coût calculatoire élevé la rend peu adaptée à un usage systématique sur des images haute résolution. Grad-CAM se distingue par sa rapidité et la cohérence sémantique de ses cartes, mais sa résolution spatiale, contrainte par la taille des tenseurs internes, reste trop grossière pour une localisation précise.
+
+Troisièmement, aucune des trois méthodes ne suffit seule. Les cas où IG et Grad-CAM s'accordent sur une région renforcent la confiance dans l'explication ; là où elles divergent, c'est souvent le signe d'une limite de l'une ou de l'autre. Une utilisation combinée apparaît donc comme la pratique la plus robuste.
+Enfin, l'évaluation qualitative utilisée ici montre ses limites : l'absence de métriques quantitatives (fidélité, robustesse) rend difficile toute comparaison rigoureuse.
+C'est une direction naturelle pour approfondir ce travail, notamment en intégrant des protocoles d'évaluation comme les scores de deletion/insertion ou des études utilisateurs formelles.
 
 \remerciement{
-%Un court paragraphe peut-être utilisé à la fin pour les remerciements.
-Nous tenions à remercier notre encadrant, M. Blansché, ...
+Nous tenions à remercier Monsieur Blansché pour son encadrement et son accompagnement durant ce projet de recherche.
+Grâce à sa pédagogie, son écoute et ses conseils, nous avons pu progresser avec autonomie tout en bénéficiant d’un cadre de travail stimulant et bienveillant.
 }
 
 \bibliographystyle{apalike}
