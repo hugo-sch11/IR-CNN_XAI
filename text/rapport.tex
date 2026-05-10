@@ -356,7 +356,7 @@ Cette approche permet notamment de réduire les problèmes de saturation du grad
 
 \subsection{Occlusion}
 
-Occlusion est une méthode d'explicabilité appartenant à la famille des méthodes de perturbations présentée dans la section~\ref{subsec:perturbations}.
+Occlusion est une méthode d'explicabilité appartenant à la famille des méthodes de perturbations présentée dans la section \ref{subsec:perturbations}.
 
 Concrètement, la méthode applique un masque de taille fixe qui se déplace progressivement sur l'image selon une fenêtre glissante (sliding window).
 À chaque position, la région masquée est remplacée par une valeur de référence (par exemple une valeur nulle ou moyenne), puis la prédiction du modèle est recalculée.
@@ -563,7 +563,7 @@ Grad-CAM  & faible à moyenne & faible & faible & élevée \\
 
 Les expérimentations menées sur ResNet-18 entraîné sur Imagenette ont mis en évidence plusieurs enseignements concrets.
 
-Premièrement, la qualité du modèle sous-jacent conditionne directement la pertinence des explications. Le passage de LeNet sur CIFAR-10 (~70\% de précision, images 32×32) à ResNet-18 sur Imagenette (~95\%) a produit des visualisations qualitativement bien supérieures, ce qui suggère qu'une méthode d'explicabilité n'est pas totalement dissociable du modèle qu'elle cherche à expliquer.
+Premièrement, la qualité du modèle sous-jacent conditionne directement la pertinence des explications. Le passage de LeNet sur CIFAR-10 (\textasciitilde 70\% de précision, images 32×32) à ResNet-18 sur Imagenette (\textasciitilde 95\%) a produit des visualisations qualitativement bien supérieures, ce qui suggère qu'une méthode d'explicabilité n'est pas totalement dissociable du modèle qu'elle cherche à expliquer.
 
 Deuxièmement, les trois méthodes étudiées ne répondent pas aux mêmes besoins. Les Gradients Intégrés offrent la précision spatiale la plus fine et des garanties axiomatiques solides, mais au prix d'une instabilité visuelle et d'une sensibilité importante au choix de la baseline. Occlusion produit des cartes plus lisses et plus intuitives, mais son coût calculatoire élevé la rend peu adaptée à un usage systématique sur des images haute résolution. Grad-CAM se distingue par sa rapidité et la cohérence sémantique de ses cartes, mais sa résolution spatiale, contrainte par la taille des tenseurs internes, reste trop grossière pour une localisation précise.
 
